@@ -16,8 +16,8 @@ const lexend = Lexend({
 })
 
 export const metadata: Metadata = {
-  title: 'Your Name - Portfolio',
-  description: 'Portfolio and career presentation',
+  title: 'Raul Campbell - Portfolio',
+  description: 'Full-Stack Developer | Django & Next.js Specialist | Enterprise Solutions',
 }
 
 export default function RootLayout({
