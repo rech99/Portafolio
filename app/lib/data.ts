@@ -35,12 +35,52 @@ export const experiences: Experience[] = [
 
 export const projects: Project[] = [
   {
-    id: 'portfolio-site',
-    title: 'Personal Portfolio',
-    description: 'Modern portfolio website showcasing professional experience and technical skills. Built with latest frontend conventions using Next.js 16 and Tailwind CSS with glassmorphism design and dark theme.',
-    tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+    id: 'hr-system',
+    title: 'HR Management System',
+    description: 'Django monolithic enterprise application for complete employee management, payroll processing, attendance tracking, leave management, and performance reviews. Production-ready with custom admin interface.',
+    tags: ['Django', 'Python', 'PostgreSQL', 'Enterprise'],
     liveUrl: '#',
-    githubUrl: 'https://github.com/rech99',
+    githubUrl: 'https://github.com/rech99/hr-management-system',
+  },
+  {
+    id: 'inventory-system',
+    title: 'Inventory Management System',
+    description: 'Django REST API backend with React web frontend and React Native mobile app for real-time stock tracking, warehouse management, purchase orders, and inventory analytics with WebSocket support.',
+    tags: ['Django REST', 'React', 'React Native', 'PostgreSQL'],
+    liveUrl: '#',
+    githubUrl: 'https://github.com/rech99/inventory-system',
+  },
+  {
+    id: 'crm-platform',
+    title: 'CRM Platform',
+    description: 'Next.js full-stack CRM for customer relationship management, sales pipeline tracking, lead management, and email integration. Built with modern Next.js 16 with TypeScript and PostgreSQL.',
+    tags: ['Next.js', 'TypeScript', 'PostgreSQL', 'API Integration'],
+    liveUrl: '#',
+    githubUrl: 'https://github.com/rech99/crm-platform',
+  },
+  {
+    id: 'project-manager',
+    title: 'Project Management Tool',
+    description: 'Django Channels with WebSockets for real-time project management featuring Kanban boards, task tracking, team collaboration, timeline charts, and live notifications with Celery background tasks.',
+    tags: ['Django', 'WebSockets', 'Celery', 'React'],
+    liveUrl: '#',
+    githubUrl: 'https://github.com/rech99/project-manager',
+  },
+  {
+    id: 'ecommerce-admin',
+    title: 'E-commerce Admin Panel',
+    description: 'Next.js admin dashboard for e-commerce platforms with product management, order fulfillment, Stripe payment integration, inventory tracking, and comprehensive sales analytics and reporting.',
+    tags: ['Next.js', 'Stripe', 'PostgreSQL', 'Analytics'],
+    liveUrl: '#',
+    githubUrl: 'https://github.com/rech99/ecommerce-admin',
+  },
+  {
+    id: 'saas-platform',
+    title: 'SaaS Platform',
+    description: 'Django enterprise SaaS with multi-tenant architecture, Stripe subscription management, usage-based billing, team management, webhook integrations, and comprehensive tenant isolation with Django REST API.',
+    tags: ['Django', 'Multi-tenant', 'Stripe', 'Enterprise'],
+    liveUrl: '#',
+    githubUrl: 'https://github.com/rech99/saas-platform',
   },
 ];
 
