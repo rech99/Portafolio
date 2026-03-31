@@ -221,6 +221,22 @@
     border-color: rgba(168, 85, 247, 0.5);
     box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.1);
   }
+
+  /* Carousel animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-out;
+  }
 }
 
 
