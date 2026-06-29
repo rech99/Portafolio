@@ -107,8 +107,8 @@ export const translations = {
           tags: ['Django', 'Python', 'PostgreSQL', 'Enterprise'],
           viewProject: 'View Project',
           github: 'GitHub',
-          projectUrl: '#',
-          githubUrl: 'https://github.com/rech99',
+          projectUrl: 'https://hr-management-system-bvtg.onrender.com',
+          githubUrl: 'https://github.com/rech99/hr-management-system',
         },
         {
           id: 'inventory-system',
@@ -294,8 +294,8 @@ export const translations = {
           tags: ['Django', 'Python', 'PostgreSQL', 'Enterprise'],
           viewProject: 'Ver Proyecto',
           github: 'GitHub',
-          projectUrl: '#',
-          githubUrl: 'https://github.com/rech99',
+          projectUrl: 'https://hr-management-system-bvtg.onrender.com',
+          githubUrl: 'https://github.com/rech99/hr-management-system',
         },
         {
           id: 'inventory-system',
