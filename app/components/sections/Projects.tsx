@@ -30,7 +30,7 @@ export function Projects() {
   return (
     <section id="projects" className="py-14 md:py-16 px-6">
       <div className="max-w-6xl mx-auto">
-        <SectionHeading className="text-purple-100">{t.projects.title}</SectionHeading>
+        <SectionHeading className="text-slate-100">{t.projects.title}</SectionHeading>
         
         <div className="relative">
           {/* Carousel Container */}
@@ -41,15 +41,15 @@ export function Projects() {
                 className="reveal-item reveal-delay-2 flex flex-col glass-card glass-hover rounded-xl overflow-hidden transition-all duration-300 animate-fadeIn"
               >
                 {/* Gradient Header */}
-                <div className="h-48 bg-gradient-to-br from-purple-500 to-pink-400" />
+                <div className="h-48 bg-gradient-to-br from-blue-600 to-teal-400" />
 
                 {/* Content */}
                 <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-semibold mb-2 text-purple-100">
+                  <h3 className="text-xl font-semibold mb-2 text-slate-100">
                     {project.title}
                   </h3>
 
-                  <p className="text-purple-200 mb-4 flex-1 text-sm">
+                  <p className="text-slate-300 mb-4 flex-1 text-sm">
                     {project.description}
                   </p>
 
@@ -58,7 +58,7 @@ export function Projects() {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 text-xs glass rounded-full text-purple-200"
+                        className="px-3 py-1 text-xs glass rounded-full text-teal-300"
                       >
                         {tag}
                       </span>
@@ -68,16 +68,18 @@ export function Projects() {
                   {/* Links */}
                   <div className="flex gap-4">
                     <a
-                      href="#"
-                      className="text-purple-300 hover:text-purple-200 hover:underline text-sm font-medium transition-colors"
+                      href={project.projectUrl || '#'}
+                      target={project.projectUrl !== '#' ? '_blank' : undefined}
+                      rel={project.projectUrl !== '#' ? 'noopener noreferrer' : undefined}
+                      className="text-teal-400 hover:text-teal-300 hover:underline text-sm font-medium transition-colors"
                     >
                       {project.viewProject} →
                     </a>
                     <a
-                      href="https://github.com/rech99"
+                      href={project.githubUrl || 'https://github.com/rech99'}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-purple-300 hover:text-purple-200 hover:underline text-sm font-medium transition-colors"
+                      className="text-teal-400 hover:text-teal-300 hover:underline text-sm font-medium transition-colors"
                     >
                       {project.github} →
                     </a>
@@ -90,7 +92,7 @@ export function Projects() {
           {/* Navigation Buttons */}
           <button
             onClick={goToPrevious}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 md:-translate-x-20 p-3 rounded-full bg-purple-500/20 hover:bg-purple-500/40 text-purple-200 transition-all duration-300 z-10"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 md:-translate-x-20 p-3 rounded-full bg-blue-500/10 hover:bg-blue-500/25 text-slate-300 transition-all duration-300 z-10"
             aria-label="Previous projects"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -100,7 +102,7 @@ export function Projects() {
 
           <button
             onClick={goToNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 md:translate-x-20 p-3 rounded-full bg-purple-500/20 hover:bg-purple-500/40 text-purple-200 transition-all duration-300 z-10"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 md:translate-x-20 p-3 rounded-full bg-blue-500/10 hover:bg-blue-500/25 text-slate-300 transition-all duration-300 z-10"
             aria-label="Next projects"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -117,8 +119,8 @@ export function Projects() {
               onClick={() => setCurrentIndex(index)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 index === currentIndex
-                  ? 'bg-purple-400 w-8'
-                  : 'bg-purple-600/40 hover:bg-purple-500/60'
+                  ? 'bg-teal-400 w-8'
+                  : 'bg-blue-600/40 hover:bg-blue-500/60'
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />

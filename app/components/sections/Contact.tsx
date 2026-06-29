@@ -19,15 +19,15 @@ export function Contact() {
       className="py-14 md:py-16 px-6"
     >
       <div className="max-w-5xl mx-auto">
-        <SectionHeading className="text-purple-100">{t.contact.title}</SectionHeading>
+        <SectionHeading className="text-slate-100">{t.contact.title}</SectionHeading>
         
-        <p className="reveal-item text-lg text-purple-200 mb-8 text-center max-w-3xl mx-auto">
+        <p className="reveal-item text-lg text-slate-300 mb-8 text-center max-w-3xl mx-auto">
           {t.contact.subtitle}
         </p>
         
         <form onSubmit={handleSubmit} className="reveal-item reveal-delay-1 space-y-5 text-left max-w-3xl mx-auto">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium mb-2 text-purple-200">{t.contact.form.name}</label>
+            <label htmlFor="name" className="block text-sm font-medium mb-2 text-slate-300">{t.contact.form.name}</label>
             <input
               type="text"
               id="name"
@@ -38,7 +38,7 @@ export function Contact() {
           </div>
           
           <div>
-            <label htmlFor="email" className="block text-sm font-medium mb-2 text-purple-200">{t.contact.form.email}</label>
+            <label htmlFor="email" className="block text-sm font-medium mb-2 text-slate-300">{t.contact.form.email}</label>
             <input
               type="email"
               id="email"
@@ -49,7 +49,7 @@ export function Contact() {
           </div>
           
           <div>
-            <label htmlFor="message" className="block text-sm font-medium mb-2 text-purple-200">{t.contact.form.message}</label>
+            <label htmlFor="message" className="block text-sm font-medium mb-2 text-slate-300">{t.contact.form.message}</label>
             <textarea
               id="message"
               rows={5}
@@ -61,7 +61,7 @@ export function Contact() {
           
           <button
             type="submit"
-            className="w-full px-8 py-4 bg-purple-600 text-white rounded-lg hover:bg-purple-700 shadow-lg hover:shadow-purple-500/50 transition-all duration-200 font-medium"
+            className="w-full px-8 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 shadow-lg hover:shadow-blue-500/50 transition-all duration-200 font-medium"
           >
             {t.contact.form.submit}
           </button>

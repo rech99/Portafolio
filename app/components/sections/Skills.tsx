@@ -14,17 +14,27 @@ export function Skills() {
       className="py-14 md:py-16 px-6"
     >
       <div className="max-w-5xl mx-auto">
-        <SectionHeading className="text-purple-100">{t.skills.title}</SectionHeading>
+        <SectionHeading className="text-slate-100">{t.skills.title}</SectionHeading>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {t.skills.items.map((skill) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {t.skills.categories.map((cat) => (
             <div 
-              key={skill} 
-              className="reveal-item reveal-delay-1 p-4 glass-card glass-hover rounded-xl text-center transition-all duration-300 text-purple-100"
+              key={cat.name} 
+              className="reveal-item p-6 glass-card rounded-xl border border-white/5 hover:border-teal-500/20 transition-all duration-300 flex flex-col"
             >
-              <span className="font-medium">
-                {skill}
-              </span>
+              <h3 className="text-lg font-semibold text-teal-400 mb-4 border-b border-white/5 pb-2">
+                {cat.name}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {cat.items.map((item) => (
+                  <span 
+                    key={item} 
+                    className="px-3 py-1 text-xs glass rounded-full text-slate-300 hover:text-slate-100 hover:border-teal-500/20 transition-all duration-200"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
             </div>
           ))}
         </div>

@@ -9,9 +9,9 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-12 px-6 border-t border-purple-500/20 bg-footer">
+    <footer className="py-12 px-6 border-t border-blue-500/20 bg-footer">
       <div className="max-w-6xl mx-auto text-center">
-        <p className="text-purple-200 mb-4">
+        <p className="text-slate-300 mb-4">
           © {currentYear} {t.siteConfig.name}. {t.footer.rights}
         </p>
         
@@ -20,7 +20,7 @@ export function Footer() {
             <a
               key={social.name}
               href={social.url}
-              className="text-purple-300 hover:text-purple-200 transition-colors"
+              className="text-teal-400 hover:text-teal-300 transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >

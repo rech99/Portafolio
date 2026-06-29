@@ -9,39 +9,93 @@ export const translations = {
     },
     hero: {
       title: 'Hi, I\'m Raúl Campbell',
-      subtitle: 'Software developer passionate about building innovative, scalable digital solutions',
+      subtitle: 'Software Engineer & Fullstack Developer specialized in building robust web solutions and distributed systems',
       ctaPrimary: 'View My Work',
       ctaSecondary: 'Get In Touch',
     },
     about: {
-      title: 'About Me',
+      title: 'Professional Profile',
       content: [
-        'I\'m a software engineer with solid experience in design, implementation, and maintenance of applications. Passionate about technological innovation and continuous improvement, focused on delivering efficient and scalable solutions to complex projects.',
-        'I specialize in fullstack web development with expertise in building RESTful APIs, designing robust databases, and creating responsive user interfaces. Currently pursuing a Master\'s degree in Software Development while maintaining professional experience in modern technologies.',
+        'Software Engineer and Fullstack Developer with over 3 years of experience in the design, development, and optimization of robust web applications and distributed systems. Specialist in building backend solutions with Python and Django, advanced database management, and large-scale process automation.',
+        'With a solid background in agile methodologies (Scrum/Kanban) and a rigorous approach to software security based on OWASP standards. Demonstrated ability to integrate Artificial Intelligence tools into the development lifecycle and lead technical components with a clear focus on efficiency and value delivery.',
       ],
     },
     experience: {
-      title: 'Experience',
+      title: 'Professional Experience',
       items: [
         {
           id: 'media-aerea',
-          title: 'Fullstack Web Developer',
+          title: 'Fullstack Developer',
           company: 'Media Aerea',
-          period: 'Jul 2018 - Present',
-          description: 'Development and implementation of responsive web applications. Design and maintenance of databases ensuring data integrity. Collaborated on government projects including systems for ANAM (National Environment Authority), Treasury (Hacienda), and other public organizations. Optimization of web performance through best practices. Implementation of RESTful APIs for improved frontend-backend communication.',
+          period: 'May 2023 - June 2026',
+          description: [
+            'Federal Application Development: Designed and refactored high-criticality government web platforms using Django, Bootstrap, and Tailwind CSS.',
+            'Data Engineering & Management: Implemented interactive dashboards, automated dynamic report generation, and advanced PDF export modules.',
+            'Database Optimization: Wrote complex SQL queries and developed advanced scripting for data manipulation, migration, and consistency in hybrid environments (PostgreSQL and MongoDB).',
+            'Architecture & Automation: Integrated REST APIs for system interoperability and configured asynchronous tasks using Celery and Redis to optimize server performance.',
+            'Security & Auditing: Implemented security controls in the software development lifecycle using native Django features and OWASP framework references to mitigate critical vulnerabilities.',
+            'Agile Management: Coordinated and iterated deliverables within the technical team under Scrum and Kanban frameworks.'
+          ],
         },
         {
           id: 'axcivil',
           title: 'Web Developer',
           company: 'AxCivil',
           period: '2022 - 2023',
-          description: 'Developed web page for AxCivil organization using WordPress, HTML and CSS. Created responsive designs for effective user experience.',
+          description: [
+            'Frontend Development: Designed and implemented the corporate website using WordPress, HTML5, and CSS3.',
+            'Optimization: Ensured responsive design and improved page load times to enhance the brand\'s digital presence.'
+          ],
         },
       ],
     },
+    education: {
+      title: 'Education',
+      items: [
+        {
+          id: 'masters',
+          degree: 'Master\'s in Software Engineering and Distributed Systems',
+          institution: 'Universidad de La Rioja México',
+          period: '2025 - 2026 (Final semester)',
+          details: 'Special mention: Includes a Project Management Diploma taught by the University of Miami.'
+        },
+        {
+          id: 'bachelors',
+          degree: 'Multimedia Production Engineering',
+          institution: 'Universidad LaSalle Noroeste',
+          period: '2018 - 2023',
+          details: 'Achievement: Graduated with a meritorious GPA of 9.51. Active participant in tech events like Global Game Jam and Hackathons.'
+        }
+      ]
+    },
     skills: {
       title: 'Skills & Technologies',
-      items: ['Python', 'Django', 'FastAPI', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'HTML/CSS', 'Tailwind CSS', 'PostgreSQL', 'REST APIs', 'Docker', 'Git', 'GitHub', 'GitLab', 'Prompt Engineering'],
+      categories: [
+        {
+          name: 'Languages & Frameworks',
+          items: ['Python (Django)', 'JavaScript/TypeScript', 'Angular', 'React', 'Next.js', 'Node.js', 'HTML5 / CSS3', 'Bootstrap 5', 'Tailwind CSS']
+        },
+        {
+          name: 'Databases & Storage',
+          items: ['PostgreSQL', 'MongoDB', 'Advanced SQL', 'DB Scripting']
+        },
+        {
+          name: 'Tools & DevOps',
+          items: ['Git / GitLab', 'Celery', 'Redis', 'REST APIs']
+        },
+        {
+          name: 'AI & Productivity',
+          items: ['Prompt Engineering', 'AI Agents', 'Cursor / VS Code', 'Antigravity', 'Copilot CLI']
+        },
+        {
+          name: 'Methodologies & Security',
+          items: ['Scrum / Kanban', 'PMBOK (Project Management)', 'OWASP Top 10', 'Django Security']
+        },
+        {
+          name: 'Languages & Skills',
+          items: ['Advanced English', 'Technical Leadership', 'Teamwork', 'Proactivity', 'Adaptability to Change']
+        }
+      ],
     },
     projects: {
       title: 'Featured Projects',
@@ -53,6 +107,8 @@ export const translations = {
           tags: ['Django', 'Python', 'PostgreSQL', 'Enterprise'],
           viewProject: 'View Project',
           github: 'GitHub',
+          projectUrl: '#',
+          githubUrl: 'https://github.com/rech99',
         },
         {
           id: 'inventory-system',
@@ -61,6 +117,8 @@ export const translations = {
           tags: ['Django REST', 'React', 'React Native', 'PostgreSQL'],
           viewProject: 'View Project',
           github: 'GitHub',
+          projectUrl: 'https://inventory-management-rech99.vercel.app/',
+          githubUrl: 'https://github.com/rech99/inventory-management',
         },
         {
           id: 'crm-platform',
@@ -69,6 +127,8 @@ export const translations = {
           tags: ['Next.js', 'TypeScript', 'PostgreSQL', 'API Integration'],
           viewProject: 'View Project',
           github: 'GitHub',
+          projectUrl: '#',
+          githubUrl: 'https://github.com/rech99',
         },
         {
           id: 'project-manager',
@@ -77,6 +137,8 @@ export const translations = {
           tags: ['Django', 'WebSockets', 'Celery', 'React'],
           viewProject: 'View Project',
           github: 'GitHub',
+          projectUrl: '#',
+          githubUrl: 'https://github.com/rech99',
         },
         {
           id: 'ecommerce-admin',
@@ -85,6 +147,8 @@ export const translations = {
           tags: ['Next.js', 'Stripe', 'PostgreSQL', 'Analytics'],
           viewProject: 'View Project',
           github: 'GitHub',
+          projectUrl: '#',
+          githubUrl: 'https://github.com/rech99',
         },
         {
           id: 'saas-platform',
@@ -93,6 +157,8 @@ export const translations = {
           tags: ['Django', 'Multi-tenant', 'Stripe', 'Enterprise'],
           viewProject: 'View Project',
           github: 'GitHub',
+          projectUrl: '#',
+          githubUrl: 'https://github.com/rech99',
         },
       ],
     },
@@ -130,39 +196,93 @@ export const translations = {
     },
     hero: {
       title: 'Hola, soy Raúl Campbell',
-      subtitle: 'Ingeniero de software apasionado por construir soluciones digitales innovadoras y escalables',
+      subtitle: 'Ingeniero de Software y Desarrollador Fullstack especializado en soluciones web robustas y sistemas distribuidos',
       ctaPrimary: 'Ver Mi Trabajo',
       ctaSecondary: 'Ponte en Contacto',
     },
     about: {
-      title: 'Sobre Mí',
+      title: 'Perfil Profesional',
       content: [
-        'Soy un ingeniero de software con sólida experiencia en diseño, implementación y mantenimiento de aplicaciones. Apasionado por la innovación tecnológica y la mejora continua, enfocado en aportar soluciones eficientes y escalables a proyectos complejos.',
-        'Me especializo en desarrollo web fullstack con experiencia en construcción de APIs RESTful, diseño de bases de datos robustas y creación de interfaces de usuario responsivas. Actualmente estoy cursando una Maestría en Desarrollo de Software mientras mantengo experiencia profesional en tecnologías modernas.',
+        'Ingeniero de Software y Desarrollador Fullstack con más de 3 años de experiencia en el diseño, desarrollo y optimización de aplicaciones web robustas y sistemas distribuidos. Especialista en la construcción de soluciones backend con Python y Django, gestión avanzada de bases de datos y automatización de procesos a gran escala.',
+        'Con una sólida formación en metodologías ágiles (Scrum/Kanban) y un enfoque riguroso en la seguridad del software basado en los estándares de OWASP. Capacidad demostrada para integrar herramientas de Inteligencia Artificial en el ciclo de desarrollo y liderar componentes técnicos con una clara orientación a la eficiencia y entrega de valor.',
       ],
     },
     experience: {
-      title: 'Experiencia',
+      title: 'Experiencia Profesional',
       items: [
         {
           id: 'media-aerea',
-          title: 'Desarrollador Web Fullstack',
+          title: 'Desarrollador Fullstack',
           company: 'Media Aerea',
-          period: 'Jul 2018 - Presente',
-          description: 'Desarrollo e implementación de aplicaciones web responsivas. Diseño y mantenimiento de bases de datos asegurando integridad de datos. Colaboré en proyectos gubernamentales incluyendo sistemas para ANAM (Autoridad Nacional del Ambiente), Hacienda y otras organizaciones públicas. Optimización del rendimiento web mediante mejores prácticas. Implementación de APIs RESTful para mejorar la comunicación frontend-backend.',
+          period: 'Mayo 2023 - Junio 2026',
+          description: [
+            'Desarrollo de Aplicaciones Federales: Diseño y refactorización de plataformas web gubernamentales de alta criticidad utilizando Django, Bootstrap y Tailwind CSS.',
+            'Ingeniería y Manejo de Datos: Implementación de dashboards interactivos, generación automatizada de reportes dinámicos y módulos avanzados de exportación a formatos PDF.',
+            'Optimización de Bases de Datos: Escritura de comandos SQL complejos y desarrollo de scripting avanzado para la manipulación, migración y consistencia de datos en entornos híbridos (PostgreSQL y MongoDB).',
+            'Arquitectura y Automatización: Integración de REST APIs para la interoperabilidad de sistemas y configuración de tareas asíncronas mediante Celery y Redis para optimizar el rendimiento del servidor.',
+            'Seguridad y Auditoría: Implementación de controles de seguridad en el ciclo de vida del software utilizando las funciones nativas de Django y tomando como referencia el framework de OWASP para mitigar vulnerabilidades críticas.',
+            'Gestión Ágil: Coordinación e iteración de entregables dentro del equipo técnico bajo marcos de trabajo Scrum y tableros Kanban.'
+          ],
         },
         {
           id: 'axcivil',
           title: 'Desarrollador Web',
           company: 'AxCivil',
           period: '2022 - 2023',
-          description: 'Desarrollé página web para la organización AxCivil utilizando WordPress, HTML y CSS. Creé diseños responsivos para una experiencia de usuario efectiva.',
+          description: [
+            'Desarrollo Frontend: Diseño e implementación del sitio web corporativo de la empresa utilizando WordPress, HTML5 y CSS3.',
+            'Optimización: Aseguramiento de la adaptabilidad (diseño responsivo) y mejora en los tiempos de carga para potenciar la presencia digital de la marca.'
+          ],
         },
       ],
     },
+    education: {
+      title: 'Educación',
+      items: [
+        {
+          id: 'masters',
+          degree: 'Maestría en Ingeniería de Software y Sistemas Distribuidos',
+          institution: 'Universidad de La Rioja México',
+          period: '2025 - 2026 (Último semestre)',
+          details: 'Mención especial: Incluye Diplomado en Project Management impartido por la University of Miami.'
+        },
+        {
+          id: 'bachelors',
+          degree: 'Ingeniería en Producción Multimedia',
+          institution: 'Universidad LaSalle Noroeste',
+          period: '2018 - 2023',
+          details: 'Logro: Graduado con promedio meritorio de 9.51. Participante activo en eventos tecnológicos como Global Game Jam y Hackathons.'
+        }
+      ]
+    },
     skills: {
       title: 'Habilidades y Tecnologías',
-      items: ['Python', 'Django', 'FastAPI', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'HTML/CSS', 'Tailwind CSS', 'PostgreSQL', 'REST APIs', 'Docker', 'Git', 'GitHub', 'GitLab', 'Ingeniería de Prompts'],
+      categories: [
+        {
+          name: 'Lenguajes & Frameworks',
+          items: ['Python (Django)', 'JavaScript/TypeScript', 'Angular', 'React', 'Next.js', 'Node.js', 'HTML5 / CSS3', 'Bootstrap 5', 'Tailwind CSS']
+        },
+        {
+          name: 'Bases de Datos',
+          items: ['PostgreSQL', 'MongoDB', 'SQL Avanzado', 'Scripting de BD']
+        },
+        {
+          name: 'Herramientas & DevOps',
+          items: ['Git / GitLab', 'Celery', 'Redis', 'REST APIs']
+        },
+        {
+          name: 'IA & Productividad',
+          items: ['Prompt Engineering', 'Agentes de IA', 'Cursor / VS Code', 'Antigravity', 'Copilot CLI']
+        },
+        {
+          name: 'Metodologías & Seguridad',
+          items: ['Scrum / Kanban', 'PMBOK (Project Management)', 'OWASP Top 10', 'Seguridad Django']
+        },
+        {
+          name: 'Idiomas & Habilidades',
+          items: ['Inglés avanzado', 'Liderazgo técnico', 'Trabajo en equipo', 'Proactividad', 'Adaptabilidad al cambio']
+        }
+      ],
     },
     projects: {
       title: 'Proyectos Destacados',
@@ -174,6 +294,8 @@ export const translations = {
           tags: ['Django', 'Python', 'PostgreSQL', 'Enterprise'],
           viewProject: 'Ver Proyecto',
           github: 'GitHub',
+          projectUrl: '#',
+          githubUrl: 'https://github.com/rech99',
         },
         {
           id: 'inventory-system',
@@ -182,6 +304,8 @@ export const translations = {
           tags: ['Django REST', 'React', 'React Native', 'PostgreSQL'],
           viewProject: 'Ver Proyecto',
           github: 'GitHub',
+          projectUrl: 'https://inventory-management-rech99.vercel.app/',
+          githubUrl: 'https://github.com/rech99/inventory-management',
         },
         {
           id: 'crm-platform',
@@ -190,6 +314,8 @@ export const translations = {
           tags: ['Next.js', 'TypeScript', 'PostgreSQL', 'API Integration'],
           viewProject: 'Ver Proyecto',
           github: 'GitHub',
+          projectUrl: '#',
+          githubUrl: 'https://github.com/rech99',
         },
         {
           id: 'project-manager',
@@ -198,6 +324,8 @@ export const translations = {
           tags: ['Django', 'WebSockets', 'Celery', 'React'],
           viewProject: 'Ver Proyecto',
           github: 'GitHub',
+          projectUrl: '#',
+          githubUrl: 'https://github.com/rech99',
         },
         {
           id: 'ecommerce-admin',
@@ -206,6 +334,8 @@ export const translations = {
           tags: ['Next.js', 'Stripe', 'PostgreSQL', 'Analytics'],
           viewProject: 'Ver Proyecto',
           github: 'GitHub',
+          projectUrl: '#',
+          githubUrl: 'https://github.com/rech99',
         },
         {
           id: 'saas-platform',
@@ -214,6 +344,8 @@ export const translations = {
           tags: ['Django', 'Multi-tenant', 'Stripe', 'Enterprise'],
           viewProject: 'Ver Proyecto',
           github: 'GitHub',
+          projectUrl: '#',
+          githubUrl: 'https://github.com/rech99',
         },
       ],
     },
@@ -234,7 +366,7 @@ export const translations = {
       rights: 'Todos los derechos reservados.',
     },
     siteConfig: {
-      name: 'Raúl Enrique Campbell',
+      name: 'Raúl Enrique Campbell Hidalgo',
       socials: [
         { name: 'GitHub', url: 'https://github.com/rech99' },
         { name: 'Correo', url: 'mailto:rech_99@hotmail.com' },

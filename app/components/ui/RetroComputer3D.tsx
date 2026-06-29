@@ -7,14 +7,15 @@ import { translations } from '@/app/lib/translations';
 export function RetroComputer3D() {
   const { language } = useLanguage();
   const t = translations[language];
+  const allSkills = t.skills.categories.flatMap((cat) => cat.items);
   const [currentTech, setCurrentTech] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentTech((prev) => (prev + 1) % t.skills.items.length);
+      setCurrentTech((prev) => (prev + 1) % allSkills.length);
     }, 2000);
     return () => clearInterval(interval);
-  }, [t.skills.items.length]);
+  }, [allSkills.length]);
 
   return (
     <div className="flex justify-center items-center py-6">
@@ -22,7 +23,7 @@ export function RetroComputer3D() {
         {/* Monitor */}
         <div className="monitor">
           <div className="screen">
-            <span className="tech-text">{t.skills.items[currentTech]}</span>
+            <span className="tech-text">{allSkills[currentTech]}</span>
             <div className="scan-line"></div>
           </div>
           <div className="monitor-logo">◈</div>
@@ -71,7 +72,7 @@ export function RetroComputer3D() {
           overflow: hidden;
           box-shadow: 
             inset 0 0 30px rgba(0, 0, 0, 0.9),
-            0 0 15px rgba(168, 85, 247, 0.2);
+            0 0 15px rgba(6, 182, 212, 0.2);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -101,7 +102,7 @@ export function RetroComputer3D() {
           left: 0;
           right: 0;
           bottom: 0;
-          background: radial-gradient(ellipse at center, rgba(168, 85, 247, 0.05) 0%, transparent 70%);
+          background: radial-gradient(ellipse at center, rgba(6, 182, 212, 0.05) 0%, transparent 70%);
           pointer-events: none;
         }
 
@@ -109,12 +110,12 @@ export function RetroComputer3D() {
           font-family: 'Courier New', monospace;
           font-size: 18px;
           font-weight: bold;
-          color: #a855f7;
+          color: #0ea5e9;
           text-shadow: 
-            0 0 5px #a855f7,
-            0 0 10px #a855f7,
-            0 0 20px #7c3aed,
-            0 0 40px #7c3aed;
+            0 0 5px #0ea5e9,
+            0 0 10px #0ea5e9,
+            0 0 20px #0284c7,
+            0 0 40px #0d9488;
           animation: flicker 0.1s infinite alternate;
           z-index: 2;
           letter-spacing: 1px;
@@ -129,7 +130,7 @@ export function RetroComputer3D() {
           position: absolute;
           width: 100%;
           height: 4px;
-          background: linear-gradient(transparent, rgba(168, 85, 247, 0.2), transparent);
+          background: linear-gradient(transparent, rgba(6, 182, 212, 0.2), transparent);
           animation: scan 3s linear infinite;
         }
 
