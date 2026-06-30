@@ -109,6 +109,7 @@ export const translations = {
           github: 'GitHub',
           projectUrl: 'https://hr-management-system-bvtg.onrender.com',
           githubUrl: 'https://github.com/rech99/hr-management-system',
+          image: '/images/hr-system.png',
         },
         {
           id: 'inventory-system',
@@ -119,6 +120,7 @@ export const translations = {
           github: 'GitHub',
           projectUrl: 'https://inventory-management-rech99.vercel.app/',
           githubUrl: 'https://github.com/rech99/inventory-management',
+          image: '/images/inventory-system.png',
         },
         {
           id: 'crm-platform',
@@ -129,6 +131,7 @@ export const translations = {
           github: 'GitHub',
           projectUrl: '#',
           githubUrl: 'https://github.com/rech99',
+          image: '/images/crm-platform.png',
         },
         {
           id: 'project-manager',
@@ -139,6 +142,7 @@ export const translations = {
           github: 'GitHub',
           projectUrl: '#',
           githubUrl: 'https://github.com/rech99',
+          image: '/images/project-manager.png',
         },
         {
           id: 'ecommerce-admin',
@@ -149,6 +153,7 @@ export const translations = {
           github: 'GitHub',
           projectUrl: '#',
           githubUrl: 'https://github.com/rech99',
+          image: '/images/ecommerce-admin.png',
         },
         {
           id: 'saas-platform',
@@ -159,6 +164,7 @@ export const translations = {
           github: 'GitHub',
           projectUrl: '#',
           githubUrl: 'https://github.com/rech99',
+          image: '/images/saas-platform.png',
         },
       ],
     },
@@ -296,6 +302,7 @@ export const translations = {
           github: 'GitHub',
           projectUrl: 'https://hr-management-system-bvtg.onrender.com',
           githubUrl: 'https://github.com/rech99/hr-management-system',
+          image: '/images/hr-system.png',
         },
         {
           id: 'inventory-system',
@@ -306,6 +313,7 @@ export const translations = {
           github: 'GitHub',
           projectUrl: 'https://inventory-management-rech99.vercel.app/',
           githubUrl: 'https://github.com/rech99/inventory-management',
+          image: '/images/inventory-system.png',
         },
         {
           id: 'crm-platform',
@@ -316,6 +324,7 @@ export const translations = {
           github: 'GitHub',
           projectUrl: '#',
           githubUrl: 'https://github.com/rech99',
+          image: '/images/crm-platform.png',
         },
         {
           id: 'project-manager',
@@ -326,6 +335,7 @@ export const translations = {
           github: 'GitHub',
           projectUrl: '#',
           githubUrl: 'https://github.com/rech99',
+          image: '/images/project-manager.png',
         },
         {
           id: 'ecommerce-admin',
@@ -336,6 +346,7 @@ export const translations = {
           github: 'GitHub',
           projectUrl: '#',
           githubUrl: 'https://github.com/rech99',
+          image: '/images/ecommerce-admin.png',
         },
         {
           id: 'saas-platform',
@@ -346,6 +357,7 @@ export const translations = {
           github: 'GitHub',
           projectUrl: '#',
           githubUrl: 'https://github.com/rech99',
+          image: '/images/saas-platform.png',
         },
       ],
     },

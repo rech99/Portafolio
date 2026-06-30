@@ -40,8 +40,18 @@ export function Projects() {
                 key={project.id}
                 className="reveal-item reveal-delay-2 flex flex-col glass-card glass-hover rounded-xl overflow-hidden transition-all duration-300 animate-fadeIn"
               >
-                {/* Gradient Header */}
-                <div className="h-48 bg-gradient-to-br from-blue-600 to-teal-400" />
+                {/* Project Image */}
+                <div className="h-48 relative w-full overflow-hidden bg-slate-900 border-b border-white/5">
+                  {project.image ? (
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-blue-600 to-teal-400" />
+                  )}
+                </div>
 
                 {/* Content */}
                 <div className="p-6 flex-1 flex flex-col">
