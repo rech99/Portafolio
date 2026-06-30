@@ -9,7 +9,7 @@ export const translations = {
     },
     hero: {
       title: 'Hi, I\'m Raúl Campbell',
-      subtitle: 'Software Engineer & Fullstack Developer specialized in building robust web solutions and distributed systems',
+      subtitle: 'Software Engineer & Fullstack Developer. Specializing in designing distributed systems, database optimization, and large-scale process automation with Python and Django.',
       ctaPrimary: 'View My Work',
       ctaSecondary: 'Get In Touch',
     },
@@ -202,7 +202,7 @@ export const translations = {
     },
     hero: {
       title: 'Hola, soy Raúl Campbell',
-      subtitle: 'Ingeniero de Software y Desarrollador Fullstack especializado en soluciones web robustas y sistemas distribuidos',
+      subtitle: 'Ingeniero de Software & Desarrollador Fullstack. Especializado en diseñar sistemas distribuidos, optimizar bases de datos y automatizar procesos a gran escala con Python y Django.',
       ctaPrimary: 'Ver Mi Trabajo',
       ctaSecondary: 'Ponte en Contacto',
     },
