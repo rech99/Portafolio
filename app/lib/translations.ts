@@ -140,8 +140,8 @@ export const translations = {
           tags: ['Django', 'WebSockets', 'Celery', 'React'],
           viewProject: 'View Project',
           github: 'GitHub',
-          projectUrl: '#',
-          githubUrl: 'https://github.com/rech99',
+          projectUrl: 'https://project-manager-1-ha5k.onrender.com/',
+          githubUrl: 'https://github.com/rech99/project-manager',
           image: '/images/project-manager.png',
         },
         {
@@ -333,8 +333,8 @@ export const translations = {
           tags: ['Django', 'WebSockets', 'Celery', 'React'],
           viewProject: 'Ver Proyecto',
           github: 'GitHub',
-          projectUrl: '#',
-          githubUrl: 'https://github.com/rech99',
+          projectUrl: 'https://project-manager-1-ha5k.onrender.com/',
+          githubUrl: 'https://github.com/rech99/project-manager',
           image: '/images/project-manager.png',
         },
         {
