@@ -7,7 +7,9 @@ import { translations } from '@/app/lib/translations';
 export function RetroComputer3D() {
   const { language } = useLanguage();
   const t = translations[language];
-  const allSkills = t.skills.categories.flatMap((cat) => cat.items);
+  const allSkills = t.skills.categories
+    .flatMap((cat) => cat.items)
+    .flatMap((item) => item.split('/').map((s) => s.trim()));
   const [currentTech, setCurrentTech] = useState(0);
 
   useEffect(() => {
