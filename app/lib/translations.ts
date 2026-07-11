@@ -122,6 +122,7 @@ export const translations = {
           githubUrl: 'https://github.com/rech99/inventory-management',
           image: '/images/inventory-system.png',
         },
+        /*
         {
           id: 'crm-platform',
           title: 'CRM Platform',
@@ -133,6 +134,7 @@ export const translations = {
           githubUrl: 'https://github.com/rech99',
           image: '/images/crm-platform.png',
         },
+        */
         {
           id: 'project-manager',
           title: 'Project Management Tool',
@@ -144,6 +146,7 @@ export const translations = {
           githubUrl: 'https://github.com/rech99/project-manager',
           image: '/images/project-manager.png',
         },
+        /*
         {
           id: 'ecommerce-admin',
           title: 'E-commerce Admin Panel',
@@ -166,6 +169,7 @@ export const translations = {
           githubUrl: 'https://github.com/rech99',
           image: '/images/saas-platform.png',
         },
+        */
       ],
     },
     contact: {
@@ -315,6 +319,7 @@ export const translations = {
           githubUrl: 'https://github.com/rech99/inventory-management',
           image: '/images/inventory-system.png',
         },
+        /*
         {
           id: 'crm-platform',
           title: 'Plataforma CRM',
@@ -326,6 +331,7 @@ export const translations = {
           githubUrl: 'https://github.com/rech99',
           image: '/images/crm-platform.png',
         },
+        */
         {
           id: 'project-manager',
           title: 'Herramienta de Gestión de Proyectos',
@@ -337,6 +343,7 @@ export const translations = {
           githubUrl: 'https://github.com/rech99/project-manager',
           image: '/images/project-manager.png',
         },
+        /*
         {
           id: 'ecommerce-admin',
           title: 'Panel Admin E-commerce',
@@ -359,6 +366,7 @@ export const translations = {
           githubUrl: 'https://github.com/rech99',
           image: '/images/saas-platform.png',
         },
+        */
       ],
     },
     contact: {

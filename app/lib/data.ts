@@ -50,6 +50,7 @@ export const projects: Project[] = [
     liveUrl: '#',
     githubUrl: 'https://github.com/rech99/inventory-system',
   },
+  /*
   {
     id: 'crm-platform',
     title: 'CRM Platform',
@@ -58,6 +59,7 @@ export const projects: Project[] = [
     liveUrl: '#',
     githubUrl: 'https://github.com/rech99/crm-platform',
   },
+  */
   {
     id: 'project-manager',
     title: 'Project Management Tool',
@@ -66,6 +68,7 @@ export const projects: Project[] = [
     liveUrl: '#',
     githubUrl: 'https://github.com/rech99/project-manager',
   },
+  /*
   {
     id: 'ecommerce-admin',
     title: 'E-commerce Admin Panel',
@@ -82,6 +85,7 @@ export const projects: Project[] = [
     liveUrl: '#',
     githubUrl: 'https://github.com/rech99/saas-platform',
   },
+  */
 ];
 
 export const skills: Skill[] = [
