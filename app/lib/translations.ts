@@ -9,14 +9,14 @@ export const translations = {
     },
     hero: {
       title: 'Hi, I\'m Raúl Campbell',
-      subtitle: 'Software Engineer & Fullstack Developer. Specializing in designing distributed systems, database optimization, and large-scale process automation with Python and Django.',
+      subtitle: 'Software Engineer & Fullstack Developer. Specializing in designing distributed systems, database optimization, and large-scale process automation across the full stack.',
       ctaPrimary: 'View My Work',
       ctaSecondary: 'Get In Touch',
     },
     about: {
       title: 'Professional Profile',
       content: [
-        'Software Engineer and Fullstack Developer with over 3 years of experience in the design, development, and optimization of robust web applications and distributed systems. Specialist in building backend solutions with Python and Django, advanced database management, and large-scale process automation.',
+        'Software Engineer and Fullstack Developer with over 3 years of experience in the design, development, and optimization of robust web applications and distributed systems. Specialist in building scalable backend solutions, advanced database management, and large-scale process automation.',
         'With a solid background in agile methodologies (Scrum/Kanban) and a rigorous approach to software security based on OWASP standards. Demonstrated ability to integrate Artificial Intelligence tools into the development lifecycle and lead technical components with a clear focus on efficiency and value delivery.',
       ],
     },
@@ -206,14 +206,14 @@ export const translations = {
     },
     hero: {
       title: 'Hola, soy Raúl Campbell',
-      subtitle: 'Ingeniero de Software & Desarrollador Fullstack. Especializado en diseñar sistemas distribuidos, optimizar bases de datos y automatizar procesos a gran escala con Python y Django.',
+      subtitle: 'Ingeniero de Software & Desarrollador Fullstack. Especializado en diseñar sistemas distribuidos, optimizar bases de datos y automatizar procesos a gran escala en todo el stack.',
       ctaPrimary: 'Ver Mi Trabajo',
       ctaSecondary: 'Ponte en Contacto',
     },
     about: {
       title: 'Perfil Profesional',
       content: [
-        'Ingeniero de Software y Desarrollador Fullstack con más de 3 años de experiencia en el diseño, desarrollo y optimización de aplicaciones web robustas y sistemas distribuidos. Especialista en la construcción de soluciones backend con Python y Django, gestión avanzada de bases de datos y automatización de procesos a gran escala.',
+        'Ingeniero de Software y Desarrollador Fullstack con más de 3 años de experiencia en el diseño, desarrollo y optimización de aplicaciones web robustas y sistemas distribuidos. Especialista en la construcción de soluciones backend escalables, gestión avanzada de bases de datos y automatización de procesos a gran escala.',
         'Con una sólida formación en metodologías ágiles (Scrum/Kanban) y un enfoque riguroso en la seguridad del software basado en los estándares de OWASP. Capacidad demostrada para integrar herramientas de Inteligencia Artificial en el ciclo de desarrollo y liderar componentes técnicos con una clara orientación a la eficiencia y entrega de valor.',
       ],
     },
