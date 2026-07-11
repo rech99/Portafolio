@@ -102,7 +102,7 @@ export function Projects() {
           {/* Navigation Buttons */}
           <button
             onClick={goToPrevious}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 md:-translate-x-20 p-3 rounded-full bg-blue-500/10 hover:bg-blue-500/25 text-slate-300 transition-all duration-300 z-10"
+            className="absolute left-2 md:left-0 top-1/2 -translate-y-1/2 translate-x-0 md:-translate-x-20 p-3 rounded-full bg-blue-500/10 hover:bg-blue-500/25 text-slate-300 transition-all duration-300 z-10 cursor-pointer"
             aria-label="Previous projects"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -112,7 +112,7 @@ export function Projects() {
 
           <button
             onClick={goToNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 md:translate-x-20 p-3 rounded-full bg-blue-500/10 hover:bg-blue-500/25 text-slate-300 transition-all duration-300 z-10"
+            className="absolute right-2 md:right-0 top-1/2 -translate-y-1/2 translate-x-0 md:translate-x-20 p-3 rounded-full bg-blue-500/10 hover:bg-blue-500/25 text-slate-300 transition-all duration-300 z-10 cursor-pointer"
             aria-label="Next projects"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -3,7 +3,7 @@ import { Hero, About, Experience, Skills, Projects, Contact } from '@/app/compon
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white dark:bg-slate-950">
+    <main className="min-h-screen bg-white dark:bg-slate-950 overflow-x-hidden">
       <Navbar />
       <Hero />
       <div className="bg-cyborg">
