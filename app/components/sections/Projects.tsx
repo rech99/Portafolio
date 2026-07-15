@@ -29,8 +29,19 @@ export function Projects() {
 
   return (
     <section id="projects" className="py-14 md:py-16 px-6">
-      <div className="max-w-6xl mx-auto">
-        <SectionHeading className="text-slate-100">{t.projects.title}</SectionHeading>
+      <div className="max-w-5xl mx-auto terminal-card reveal-item">
+        <div className="terminal-header">
+          <div className="terminal-dots">
+            <div className="terminal-dot terminal-dot-red" />
+            <div className="terminal-dot terminal-dot-yellow" />
+            <div className="terminal-dot terminal-dot-green" />
+          </div>
+          <span>[SYS_MODULE_04: PORTFOLIO_PROJECTS]</span>
+          <span>LOADED: 100%</span>
+        </div>
+        
+        <div className="p-8 md:p-12">
+          <SectionHeading className="text-slate-100 text-glow-cyan font-mono">{t.projects.title}</SectionHeading>
         
         <div className="relative">
           {/* Carousel Container */}
@@ -135,6 +146,7 @@ export function Projects() {
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
+        </div>
         </div>
       </div>
     </section>

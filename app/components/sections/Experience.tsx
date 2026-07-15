@@ -13,8 +13,19 @@ export function Experience() {
       id="experience"
       className="py-14 md:py-16 px-6"
     >
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div className="max-w-5xl mx-auto terminal-card reveal-item">
+        <div className="terminal-header">
+          <div className="terminal-dots">
+            <div className="terminal-dot terminal-dot-red" />
+            <div className="terminal-dot terminal-dot-yellow" />
+            <div className="terminal-dot terminal-dot-green" />
+          </div>
+          <span>[SYS_MODULE_02: WORK_EDUCATION]</span>
+          <span>QUERY: SUCCESS</span>
+        </div>
+        
+        <div className="p-8 md:p-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Work Experience Column */}
           <div className="space-y-8">
             <h3 className="text-2xl font-bold text-teal-400 border-b border-white/5 pb-3">
@@ -83,6 +94,7 @@ export function Experience() {
                 </article>
               ))}
             </div>
+          </div>
           </div>
         </div>
       </div>

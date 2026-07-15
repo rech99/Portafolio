@@ -62,10 +62,21 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="py-14 md:py-16 px-6"
+      className="py-14 md:py-16 px-6 glow-ambient-left"
     >
-      <div className="max-w-5xl mx-auto">
-        <SectionHeading className="text-slate-100">{t.contact.title}</SectionHeading>
+      <div className="max-w-4xl mx-auto terminal-card reveal-item">
+        <div className="terminal-header">
+          <div className="terminal-dots">
+            <div className="terminal-dot terminal-dot-red" />
+            <div className="terminal-dot terminal-dot-yellow" />
+            <div className="terminal-dot terminal-dot-green" />
+          </div>
+          <span>[SYS_MODULE_05: CONTACT_INTERFACE]</span>
+          <span>GATEWAY: OPEN</span>
+        </div>
+        
+        <div className="p-8 md:p-12">
+          <SectionHeading className="text-slate-100 text-glow-cyan font-mono text-center">{t.contact.title}</SectionHeading>
         
         <p className="reveal-item text-lg text-slate-300 mb-8 text-center max-w-3xl mx-auto">
           {t.contact.subtitle}
@@ -129,7 +140,7 @@ export function Contact() {
           <button
             type="submit"
             disabled={status === 'loading'}
-            className="w-full px-8 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 shadow-lg hover:shadow-blue-500/50 transition-all duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full px-8 py-4 bg-cyan-950/40 border border-cyan-500/80 text-cyan-400 font-mono text-xs uppercase tracking-widest hover:bg-cyan-500/20 shadow-[0_0_15px_rgba(6,182,212,0.15)] hover:shadow-[0_0_25px_rgba(6,182,212,0.35)] transition-all duration-300 rounded-none disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {status === 'loading' ? (
               <>
@@ -144,6 +155,7 @@ export function Contact() {
             )}
           </button>
         </form>
+        </div>
       </div>
     </section>
   );

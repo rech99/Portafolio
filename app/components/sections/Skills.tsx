@@ -11,10 +11,21 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="py-14 md:py-16 px-6"
+      className="py-14 md:py-16 px-6 glow-ambient-right"
     >
-      <div className="max-w-5xl mx-auto">
-        <SectionHeading className="text-slate-100">{t.skills.title}</SectionHeading>
+      <div className="max-w-4xl mx-auto terminal-card reveal-item">
+        <div className="terminal-header">
+          <div className="terminal-dots">
+            <div className="terminal-dot terminal-dot-red" />
+            <div className="terminal-dot terminal-dot-yellow" />
+            <div className="terminal-dot terminal-dot-green" />
+          </div>
+          <span>[SYS_MODULE_03: SKILLS_INVENTORY]</span>
+          <span>COMPILING: DONE</span>
+        </div>
+        
+        <div className="p-8 md:p-12">
+          <SectionHeading className="text-slate-100 text-glow-teal font-mono">{t.skills.title}</SectionHeading>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {t.skills.categories.map((cat) => (
@@ -37,6 +48,7 @@ export function Skills() {
               </div>
             </div>
           ))}
+        </div>
         </div>
       </div>
     </section>
