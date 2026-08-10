@@ -24,6 +24,16 @@ export const translations = {
       title: 'Professional Experience',
       items: [
         {
+          id: 'axcivil',
+          title: 'Web Developer',
+          company: 'AxCivil',
+          period: '2022 - 2023',
+          description: [
+            'Frontend Development: Designed and implemented the corporate website using WordPress, HTML5, and CSS3.',
+            'Optimization: Ensured responsive design and improved page load times to enhance the brand\'s digital presence.'
+          ],
+        },
+        {
           id: 'media-aerea',
           title: 'Fullstack Developer',
           company: 'Media Aerea',
@@ -38,13 +48,14 @@ export const translations = {
           ],
         },
         {
-          id: 'axcivil',
-          title: 'Web Developer',
-          company: 'AxCivil',
-          period: '2022 - 2023',
+          id: 'ruben-torres',
+          title: 'Lead Fullstack Developer',
+          company: 'Rubén Torres (rubentorresq.com)',
+          period: '2024 - 2026',
           description: [
-            'Frontend Development: Designed and implemented the corporate website using WordPress, HTML5, and CSS3.',
-            'Optimization: Ensured responsive design and improved page load times to enhance the brand\'s digital presence.'
+            'Audio-Visual Web Platform Architecture: Designed & engineered the official website and interactive portfolio for music producer and sound artist Rubén Torres using Next.js 16 (App Router), React 19, and CSS Modules.',
+            'In-Memory Audio Decryption Player: Implemented a secure audio player with dynamic in-memory decryption and floating HUD controls.',
+            'Media Gallery & i18n: Built high-performance dynamic image/video gallery with WebP optimization and instant bilingual (ES/EN) internationalization.'
           ],
         },
       ],
@@ -53,21 +64,22 @@ export const translations = {
       title: 'Education',
       items: [
         {
+          id: 'bachelors',
+          degree: 'Multimedia Production Engineering',
+          institution: 'Universidad LaSalle Noroeste',
+          period: '2018 - 2023',
+          details: 'Achievement: Graduated with a meritorious GPA of 9.51. Active participant in tech events like Global Game Jam and Hackathons.'
+        },
+        {
           id: 'masters',
           degree: 'Master\'s in Software Engineering and Distributed Systems',
           institution: 'Universidad de La Rioja México',
           period: '2025 - 2026 (Final semester)',
           details: 'Special mention: Includes a Project Management Diploma taught by the University of Miami.'
         },
-        {
-          id: 'bachelors',
-          degree: 'Multimedia Production Engineering',
-          institution: 'Universidad LaSalle Noroeste',
-          period: '2018 - 2023',
-          details: 'Achievement: Graduated with a meritorious GPA of 9.51. Active participant in tech events like Global Game Jam and Hackathons.'
-        }
       ]
     },
+
     skills: {
       title: 'Skills & Technologies',
       categories: [
@@ -101,6 +113,17 @@ export const translations = {
       title: 'Featured Projects',
       items: [
         {
+          id: 'ruben-torres-web',
+          title: 'Rubén Torres Official Website',
+          description: 'Official website and interactive audio-visual portfolio for music producer and sound artist Rubén Torres. Built with Next.js 16 (App Router), React 19, in-memory dynamic audio decryption player, WebP media gallery, and bilingual i18n.',
+          tags: ['Next.js 16', 'React 19', 'CSS Modules', 'Web Audio API', 'i18n'],
+          viewProject: 'View Site',
+          github: 'GitHub',
+          projectUrl: 'https://rubentorresq.com',
+          githubUrl: 'https://github.com/rech99/portafolio-ruben-torres',
+          image: '/images/ruben-torres-portfolio.png',
+        },
+        {
           id: 'hr-system',
           title: 'HR Management System',
           description: 'Django monolithic enterprise application for complete employee management, payroll processing, attendance tracking, leave management, and performance reviews. Production-ready with custom admin interface.',
@@ -109,7 +132,7 @@ export const translations = {
           github: 'GitHub',
           projectUrl: 'https://hr-management-system-bvtg.onrender.com',
           githubUrl: 'https://github.com/rech99/hr-management-system',
-          image: '/images/hr-system.png',
+          image: '/images/hr-system-abstract.jpg',
         },
         {
           id: 'inventory-system',
@@ -120,8 +143,9 @@ export const translations = {
           github: 'GitHub',
           projectUrl: 'https://inventory-management-rech99.vercel.app/',
           githubUrl: 'https://github.com/rech99/inventory-management',
-          image: '/images/inventory-system.png',
+          image: '/images/inventory-system-abstract.jpg',
         },
+
         /*
         {
           id: 'crm-platform',
@@ -144,7 +168,7 @@ export const translations = {
           github: 'GitHub',
           projectUrl: 'https://project-manager-1-ha5k.onrender.com/',
           githubUrl: 'https://github.com/rech99/project-manager',
-          image: '/images/project-manager.png',
+          image: '/images/project-manager-abstract.jpg',
         },
         /*
         {
@@ -191,10 +215,12 @@ export const translations = {
     siteConfig: {
       name: 'Raúl Enrique Campbell Hidalgo',
       socials: [
+        { name: 'LinkedIn', url: 'https://www.linkedin.com/in/raul-enrique-campbell-hidalgo-80868527a/' },
         { name: 'GitHub', url: 'https://github.com/rech99' },
         { name: 'Email', url: 'mailto:rech_99@hotmail.com' },
       ],
     },
+
   },
   es: {
     nav: {
@@ -221,6 +247,16 @@ export const translations = {
       title: 'Experiencia Profesional',
       items: [
         {
+          id: 'axcivil',
+          title: 'Desarrollador Web',
+          company: 'AxCivil',
+          period: '2022 - 2023',
+          description: [
+            'Desarrollo Frontend: Diseño e implementación del sitio web corporativo de la empresa utilizando WordPress, HTML5 y CSS3.',
+            'Optimización: Aseguramiento de la adaptabilidad (diseño responsivo) y mejora en los tiempos de carga para potenciar la presencia digital de la marca.'
+          ],
+        },
+        {
           id: 'media-aerea',
           title: 'Desarrollador Fullstack',
           company: 'Media Aerea',
@@ -235,13 +271,14 @@ export const translations = {
           ],
         },
         {
-          id: 'axcivil',
-          title: 'Desarrollador Web',
-          company: 'AxCivil',
-          period: '2022 - 2023',
+          id: 'ruben-torres',
+          title: 'Desarrollador Fullstack Principal',
+          company: 'Rubén Torres (rubentorresq.com)',
+          period: '2024 - 2026',
           description: [
-            'Desarrollo Frontend: Diseño e implementación del sitio web corporativo de la empresa utilizando WordPress, HTML5 y CSS3.',
-            'Optimización: Aseguramiento de la adaptabilidad (diseño responsivo) y mejora en los tiempos de carga para potenciar la presencia digital de la marca.'
+            'Arquitectura de Plataforma Web Audiovisual: Diseño y desarrollo del sitio web oficial y portafolio interactivo para el productor musical Rubén Torres utilizando Next.js 16 (App Router), React 19 y CSS Modules.',
+            'Reproductor Audio con Descifrado en Memoria: Implementación de reproductor de audio con descifrado dinámico en memoria y controles HUD flotantes.',
+            'Galería Multimedia e i18n: Construcción de galería dinámica de imágenes y videos optimizados en WebP con internacionalización bilingüe (ES/EN) instantánea.'
           ],
         },
       ],
@@ -250,21 +287,22 @@ export const translations = {
       title: 'Educación',
       items: [
         {
+          id: 'bachelors',
+          degree: 'Ingeniería en Producción Multimedia',
+          institution: 'Universidad LaSalle Noroeste',
+          period: '2018 - 2023',
+          details: 'Logro: Graduado con promedio meritorio de 9.51. Participante activo en eventos tecnológicos como Global Game Jam y Hackathons.'
+        },
+        {
           id: 'masters',
           degree: 'Maestría en Ingeniería de Software y Sistemas Distribuidos',
           institution: 'Universidad de La Rioja México',
           period: '2025 - 2026 (Último semestre)',
           details: 'Mención especial: Incluye Diplomado en Project Management impartido por la University of Miami.'
         },
-        {
-          id: 'bachelors',
-          degree: 'Ingeniería en Producción Multimedia',
-          institution: 'Universidad LaSalle Noroeste',
-          period: '2018 - 2023',
-          details: 'Logro: Graduado con promedio meritorio de 9.51. Participante activo en eventos tecnológicos como Global Game Jam y Hackathons.'
-        }
       ]
     },
+
     skills: {
       title: 'Habilidades y Tecnologías',
       categories: [
@@ -298,6 +336,17 @@ export const translations = {
       title: 'Proyectos Destacados',
       items: [
         {
+          id: 'ruben-torres-web',
+          title: 'Portafolio Oficial Rubén Torres',
+          description: 'Sitio web oficial y portafolio interactivo de música y arte sonoro para el productor Rubén Torres. Desarrollado con Next.js 16 (App Router), React 19, reproductor de audio dinámico con descifrado en memoria, galería multimedia optimizada en WebP e internacionalización bilingüe (ES/EN).',
+          tags: ['Next.js 16', 'React 19', 'CSS Modules', 'Web Audio API', 'i18n'],
+          viewProject: 'Ver Sitio',
+          github: 'GitHub',
+          projectUrl: 'https://rubentorresq.com',
+          githubUrl: 'https://github.com/rech99/portafolio-ruben-torres',
+          image: '/images/ruben-torres-portfolio.png',
+        },
+        {
           id: 'hr-system',
           title: 'Sistema de Gestión de RR.HH',
           description: 'Aplicación empresarial monolítica Django para gestión completa de empleados, nómina, asistencia, gestión de licencias y evaluaciones de desempeño. Lista para producción con interfaz admin personalizada.',
@@ -306,7 +355,7 @@ export const translations = {
           github: 'GitHub',
           projectUrl: 'https://hr-management-system-bvtg.onrender.com',
           githubUrl: 'https://github.com/rech99/hr-management-system',
-          image: '/images/hr-system.png',
+          image: '/images/hr-system-abstract.jpg',
         },
         {
           id: 'inventory-system',
@@ -317,8 +366,9 @@ export const translations = {
           github: 'GitHub',
           projectUrl: 'https://inventory-management-rech99.vercel.app/',
           githubUrl: 'https://github.com/rech99/inventory-management',
-          image: '/images/inventory-system.png',
+          image: '/images/inventory-system-abstract.jpg',
         },
+
         /*
         {
           id: 'crm-platform',
@@ -341,7 +391,7 @@ export const translations = {
           github: 'GitHub',
           projectUrl: 'https://project-manager-1-ha5k.onrender.com/',
           githubUrl: 'https://github.com/rech99/project-manager',
-          image: '/images/project-manager.png',
+          image: '/images/project-manager-abstract.jpg',
         },
         /*
         {
@@ -388,9 +438,11 @@ export const translations = {
     siteConfig: {
       name: 'Raúl Enrique Campbell Hidalgo',
       socials: [
+        { name: 'LinkedIn', url: 'https://www.linkedin.com/in/raul-enrique-campbell-hidalgo-80868527a/' },
         { name: 'GitHub', url: 'https://github.com/rech99' },
         { name: 'Correo', url: 'mailto:rech_99@hotmail.com' },
       ],
     },
+
   },
 };

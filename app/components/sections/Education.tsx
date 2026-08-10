@@ -4,29 +4,29 @@ import { useLanguage } from '@/app/lib/useLanguage';
 import { translations } from '@/app/lib/translations';
 import { SectionHeading, SectionReveal, HorizontalTimeline } from '@/app/components/ui';
 
-export function Experience() {
+export function Education() {
   const { language } = useLanguage();
   const t = translations[language];
 
-  const timelineItems = t.experience.items.map((exp) => ({
-    id: exp.id,
-    title: exp.title,
-    companyOrInstitution: exp.company,
-    period: exp.period,
-    description: exp.description,
+  const timelineItems = t.education.items.map((edu) => ({
+    id: edu.id,
+    title: edu.degree,
+    companyOrInstitution: edu.institution,
+    period: edu.period,
+    details: edu.details,
   }));
 
   return (
-    <SectionReveal id="experience" className="py-2 w-full h-auto md:h-full flex flex-col justify-center" direction="right">
+    <SectionReveal id="education" className="py-2 w-full h-auto md:h-full flex flex-col justify-center" direction="left">
       <div className="max-w-6xl mx-auto w-full my-auto">
 
 
 
-        <SectionHeading number="03">{t.experience.title}</SectionHeading>
+        <SectionHeading number="02">{t.education.title}</SectionHeading>
 
 
         
-        {/* Modern Horizontal Timeline Carousel */}
+        {/* Modern Horizontal Timeline */}
         <HorizontalTimeline items={timelineItems} itemsPerPage={3} />
       </div>
     </SectionReveal>

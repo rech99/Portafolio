@@ -7,97 +7,82 @@ export function Navbar() {
   const { language, setLanguage } = useLanguage();
   const t = translations[language];
 
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    window.dispatchEvent(new CustomEvent('deck:goto-slide', { detail: { id } }));
+
+    const target = document.getElementById(id);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#030712]/95 backdrop-blur-md border-b border-cyan-500/20 shadow-[0_1px_20px_rgba(6,182,212,0.05)]">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between font-mono">
-        {/* Logo / Brand Name */}
+    <header className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/90 backdrop-blur-sm border-b border-zinc-800">
+      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between font-mono text-xs">
+        {/* Brand Ident */}
         <a 
           href="#" 
-          className="text-base md:text-lg font-bold text-cyan-400 hover:text-cyan-350 transition-colors flex items-center gap-2"
+          onClick={(e) => handleSmoothScroll(e, 'hero')}
+          className="font-semibold text-white tracking-widest uppercase hover:text-orange-500 transition-colors flex items-center gap-2"
         >
-          <span className="text-cyan-500 text-glow-cyan">&gt;_</span>
+          <span className="w-2 h-2 bg-orange-500 inline-block" />
           <span>{t.siteConfig.name}</span>
         </a>
         
-        {/* Desktop Navigation */}
-        <ul className="hidden md:flex gap-6 text-xs items-center">
-          <li>
-            <a
-              href="#about"
-              className="text-slate-400 hover:text-cyan-400 hover:text-glow-cyan transition-colors"
-            >
-              [{t.nav.about.toLowerCase()}]
-            </a>
-          </li>
-          <li>
-            <a
-              href="#experience"
-              className="text-slate-400 hover:text-cyan-400 hover:text-glow-cyan transition-colors"
-            >
-              [{t.nav.experience.toLowerCase()}]
-            </a>
-          </li>
-          <li>
-            <a
-              href="#skills"
-              className="text-slate-400 hover:text-cyan-400 hover:text-glow-cyan transition-colors"
-            >
-              [{t.nav.skills.toLowerCase()}]
-            </a>
-          </li>
-          <li>
-            <a
-              href="#projects"
-              className="text-slate-400 hover:text-cyan-400 hover:text-glow-cyan transition-colors"
-            >
-              [{t.nav.projects.toLowerCase()}]
-            </a>
-          </li>
-          <li>
-            <a
-              href="#contact"
-              className="text-slate-400 hover:text-cyan-400 hover:text-glow-cyan transition-colors"
-            >
-              [{t.nav.contact.toLowerCase()}]
-            </a>
-          </li>
-          
-          {/* Language Toggle (Desktop) */}
-          <li className="border-l border-cyan-550/20 pl-6 flex items-center gap-2">
-            <span className="text-[10px] text-slate-500">LANG:</span>
-            <div className="flex gap-1.5">
-              <button
-                onClick={() => setLanguage('en')}
-                className={language === 'en' ? 'px-2 py-0.5 rounded border border-cyan-500/40 bg-cyan-950/40 text-cyan-400 text-[10px] font-semibold' : 'px-2 py-0.5 rounded border border-transparent text-slate-400 hover:text-slate-200 cursor-pointer text-[10px]'}
-              >
-                EN
-              </button>
-              <button
-                onClick={() => setLanguage('es')}
-                className={language === 'es' ? 'px-2 py-0.5 rounded border border-cyan-500/40 bg-cyan-950/40 text-cyan-400 text-[10px] font-semibold' : 'px-2 py-0.5 rounded border border-transparent text-slate-400 hover:text-slate-200 cursor-pointer text-[10px]'}
-              >
-                ES
-              </button>
-            </div>
-          </li>
-        </ul>
- 
-        {/* Mobile Language Toggle (hidden on desktop) */}
-        <div className="flex gap-1.5 md:hidden">
+        {/* Desktop Nav Items */}
+        <nav className="hidden md:flex items-center gap-4 lg:gap-8 text-zinc-400 uppercase tracking-wider text-[11px] lg:text-xs">
+          <a href="#about" onClick={(e) => handleSmoothScroll(e, 'about')} className="hover:text-white transition-colors cursor-pointer whitespace-nowrap">
+            {t.nav.about}
+          </a>
+          <a href="#education" onClick={(e) => handleSmoothScroll(e, 'education')} className="hover:text-white transition-colors cursor-pointer whitespace-nowrap">
+            {t.education.title}
+          </a>
+          <a href="#experience" onClick={(e) => handleSmoothScroll(e, 'experience')} className="hover:text-white transition-colors cursor-pointer whitespace-nowrap">
+            {t.nav.experience}
+          </a>
+          <a href="#skills" onClick={(e) => handleSmoothScroll(e, 'skills')} className="hover:text-white transition-colors cursor-pointer whitespace-nowrap">
+            {t.nav.skills}
+          </a>
+          <a href="#projects" onClick={(e) => handleSmoothScroll(e, 'projects')} className="hover:text-white transition-colors cursor-pointer whitespace-nowrap">
+            {t.nav.projects}
+          </a>
+          <a href="#contact" onClick={(e) => handleSmoothScroll(e, 'contact')} className="hover:text-white transition-colors cursor-pointer whitespace-nowrap">
+            {t.nav.contact}
+          </a>
+        </nav>
+
+
+
+
+
+
+        {/* Language Selector (Sharp Box Buttons) */}
+        <div className="flex items-center gap-1 border border-zinc-800 p-0.5 bg-zinc-900/60">
           <button
             onClick={() => setLanguage('en')}
-            className={language === 'en' ? 'px-2 py-0.5 rounded border border-cyan-500/40 bg-cyan-950/40 text-cyan-400 text-[10px] font-semibold' : 'px-2 py-0.5 rounded border border-transparent text-slate-400 text-[10px]'}
+            className={`px-2.5 py-1 text-[11px] font-mono tracking-wider transition-colors cursor-pointer ${
+              language === 'en'
+                ? 'bg-zinc-100 text-zinc-950 font-bold'
+                : 'text-zinc-400 hover:text-white'
+            }`}
           >
             EN
           </button>
           <button
             onClick={() => setLanguage('es')}
-            className={language === 'es' ? 'px-2 py-0.5 rounded border border-cyan-500/40 bg-cyan-950/40 text-cyan-400 text-[10px] font-semibold' : 'px-2 py-0.5 rounded border border-transparent text-slate-400 text-[10px]'}
+            className={`px-2.5 py-1 text-[11px] font-mono tracking-wider transition-colors cursor-pointer ${
+              language === 'es'
+                ? 'bg-zinc-100 text-zinc-950 font-bold'
+                : 'text-zinc-400 hover:text-white'
+            }`}
           >
             ES
           </button>
         </div>
       </div>
-    </nav>
+    </header>
   );
 }
+

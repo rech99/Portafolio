@@ -11,12 +11,12 @@ interface TextareaProps extends ComponentProps<'textarea'> {
 export function Input({ label, id, className = '', ...props }: InputProps) {
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-medium mb-2">
+      <label htmlFor={id} className="block text-xs font-mono uppercase tracking-wider text-zinc-400 mb-2">
         {label}
       </label>
       <input
         id={id}
-        className={`w-full px-4 py-3 bg-surface-light dark:bg-surface-dark-alt border border-border-light dark:border-border-dark rounded-lg focus:border-primary-600 focus:ring-2 focus:ring-primary-600/20 transition-all outline-none ${className}`}
+        className={`w-full px-4 py-3 bg-zinc-900 border border-zinc-800 text-white placeholder-zinc-600 focus:border-white focus:outline-none text-sm font-mono transition-colors ${className}`}
         {...props}
       />
     </div>
@@ -26,14 +26,15 @@ export function Input({ label, id, className = '', ...props }: InputProps) {
 export function Textarea({ label, id, className = '', ...props }: TextareaProps) {
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-medium mb-2">
+      <label htmlFor={id} className="block text-xs font-mono uppercase tracking-wider text-zinc-400 mb-2">
         {label}
       </label>
       <textarea
         id={id}
-        className={`w-full px-4 py-3 bg-surface-light dark:bg-surface-dark-alt border border-border-light dark:border-border-dark rounded-lg focus:border-primary-600 focus:ring-2 focus:ring-primary-600/20 transition-all outline-none resize-none ${className}`}
+        className={`w-full px-4 py-3 bg-zinc-900 border border-zinc-800 text-white placeholder-zinc-600 focus:border-white focus:outline-none text-sm font-mono transition-colors resize-none ${className}`}
         {...props}
       />
     </div>
   );
 }
+

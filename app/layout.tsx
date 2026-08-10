@@ -16,9 +16,15 @@ const lexend = Lexend({
 })
 
 export const metadata: Metadata = {
-  title: 'Raul Campbell - Portfolio',
-  description: 'Full-Stack Developer | Django & Next.js Specialist | Enterprise Solutions',
+  title: 'Raúl Campbell — Software Engineer Portfolio',
+  description: 'Fullstack Software Engineer specializing in distributed systems, database optimization, and enterprise architecture.',
+  icons: {
+    icon: '/icon.svg',
+    shortcut: '/icon.svg',
+    apple: '/icon.svg',
+  },
 }
+
 
 export default function RootLayout({
   children,

@@ -3,11 +3,13 @@
 import { useState, type FormEvent } from 'react';
 import { useLanguage } from '@/app/lib/useLanguage';
 import { translations } from '@/app/lib/translations';
-import { SectionHeading } from '@/app/components/ui';
+import { SectionHeading, SectionReveal, SplitReveal } from '@/app/components/ui';
+import { Footer } from '@/app/components/layout';
 
 export function Contact() {
   const { language } = useLanguage();
   const t = translations[language];
+
 
   const [formData, setFormData] = useState({
     name: '',
@@ -60,106 +62,155 @@ export function Contact() {
   };
 
   return (
-    <section
-      id="contact"
-      className="py-14 md:py-16 px-6 glow-ambient-left"
-    >
-      <div className="max-w-4xl mx-auto terminal-card reveal-item">
-        <div className="terminal-header">
-          <div className="terminal-dots">
-            <div className="terminal-dot terminal-dot-red" />
-            <div className="terminal-dot terminal-dot-yellow" />
-            <div className="terminal-dot terminal-dot-green" />
-          </div>
-          <span>[SYS_MODULE_05: CONTACT_INTERFACE]</span>
-          <span>GATEWAY: OPEN</span>
-        </div>
-        
-        <div className="p-8 md:p-12">
-          <SectionHeading className="text-slate-100 text-glow-cyan font-mono text-center">{t.contact.title}</SectionHeading>
-        
-        <p className="reveal-item text-lg text-slate-300 mb-8 text-center max-w-3xl mx-auto">
-          {t.contact.subtitle}
-        </p>
-        
-        <form onSubmit={handleSubmit} className="reveal-item reveal-delay-1 space-y-5 text-left max-w-3xl mx-auto">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium mb-2 text-slate-300">{t.contact.form.name}</label>
-            <input
-              type="text"
-              id="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder={t.contact.form.namePlaceholder}
-              required
-              disabled={status === 'loading'}
-              className="w-full px-4 py-3 glass-input rounded-lg transition-all outline-none text-gray-100 placeholder-gray-500 disabled:opacity-50"
-            />
-          </div>
-          
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium mb-2 text-slate-300">{t.contact.form.email}</label>
-            <input
-              type="email"
-              id="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder={t.contact.form.emailPlaceholder}
-              required
-              disabled={status === 'loading'}
-              className="w-full px-4 py-3 glass-input rounded-lg transition-all outline-none text-gray-100 placeholder-gray-500 disabled:opacity-50"
-            />
-          </div>
-          
-          <div>
-            <label htmlFor="message" className="block text-sm font-medium mb-2 text-slate-300">{t.contact.form.message}</label>
-            <textarea
-              id="message"
-              rows={5}
-              value={formData.message}
-              onChange={handleChange}
-              placeholder={t.contact.form.messagePlaceholder}
-              required
-              disabled={status === 'loading'}
-              className="w-full px-4 py-3 glass-input rounded-lg transition-all outline-none text-gray-100 placeholder-gray-500 resize-none disabled:opacity-50"
-            />
-          </div>
+    <SectionReveal id="contact" className="py-2 w-full h-auto md:h-full flex flex-col justify-center" direction="left">
+      <div className="max-w-6xl mx-auto w-full my-auto">
 
-          {status === 'success' && (
-            <div className="p-4 bg-teal-500/10 border border-teal-500/30 text-teal-300 rounded-lg text-sm font-medium animate-fadeIn">
-              {successMessage}
-            </div>
-          )}
 
-          {status === 'error' && (
-            <div className="p-4 bg-red-500/10 border border-red-500/30 text-red-300 rounded-lg text-sm font-medium animate-fadeIn">
-              {errorMessage}
+
+
+        <SectionHeading number="06">{t.contact.title}</SectionHeading>
+
+
+        
+        <SplitReveal
+          left={
+            <div className="space-y-4 sm:space-y-6">
+              <h3 className="text-xs sm:text-sm font-semibold text-zinc-300 uppercase tracking-wider">
+                {t.contact.title}
+              </h3>
+              
+              <p className="text-xs sm:text-base text-zinc-300 leading-relaxed font-normal">
+                {t.contact.subtitle}
+              </p>
+
+              <div className="border border-zinc-800 bg-zinc-950 divide-y divide-zinc-800 font-mono text-[11px] sm:text-xs">
+                <div className="p-3 sm:p-4 flex items-center justify-between">
+                  <span className="text-zinc-500">EMAIL</span>
+                  <a 
+                    href="mailto:rech_99@hotmail.com" 
+                    className="text-white hover:text-orange-500 transition-colors truncate max-w-[200px] sm:max-w-none"
+                  >
+                    rech_99@hotmail.com ↗
+                  </a>
+                </div>
+
+                <div className="p-3 sm:p-4 flex items-center justify-between">
+                  <span className="text-zinc-500">GITHUB</span>
+                  <a 
+                    href="https://github.com/rech99" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-white hover:text-orange-500 transition-colors"
+                  >
+                    github.com/rech99 ↗
+                  </a>
+                </div>
+
+                <div className="p-3 sm:p-4 flex items-center justify-between">
+                  <span className="text-zinc-500">LINKEDIN</span>
+                  <a 
+                    href="https://www.linkedin.com/in/raul-enrique-campbell-hidalgo-80868527a/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-white hover:text-orange-500 transition-colors truncate max-w-[180px] sm:max-w-none"
+                  >
+                    linkedin.com/in/raul-enrique-campbell ↗
+                  </a>
+                </div>
+              </div>
             </div>
-          )}
-          
-          <button
-            type="submit"
-            disabled={status === 'loading'}
-            className="w-full px-8 py-4 bg-cyan-950/40 border border-cyan-500/80 text-cyan-400 font-mono text-xs uppercase tracking-widest hover:bg-cyan-500/20 shadow-[0_0_15px_rgba(6,182,212,0.15)] hover:shadow-[0_0_25px_rgba(6,182,212,0.35)] transition-all duration-300 rounded-none disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-          >
-            {status === 'loading' ? (
-              <>
-                <svg className="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                </svg>
-                {sendingText}
-              </>
-            ) : (
-              t.contact.form.submit
-            )}
-          </button>
-        </form>
-        </div>
+          }
+          right={
+            <div className="border border-zinc-800 bg-zinc-950 p-4 sm:p-8">
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label htmlFor="name" className="block text-xs font-mono uppercase tracking-wider text-zinc-400 mb-2">
+                    {t.contact.form.name}
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder={t.contact.form.namePlaceholder}
+                    required
+                    disabled={status === 'loading'}
+                    className="w-full px-4 py-3.5 bg-zinc-900 border border-zinc-800 text-white placeholder-zinc-600 focus:border-white focus:outline-none text-sm font-mono transition-colors disabled:opacity-50"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="email" className="block text-xs font-mono uppercase tracking-wider text-zinc-400 mb-2">
+                    {t.contact.form.email}
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder={t.contact.form.emailPlaceholder}
+                    required
+                    disabled={status === 'loading'}
+                    className="w-full px-4 py-3.5 bg-zinc-900 border border-zinc-800 text-white placeholder-zinc-600 focus:border-white focus:outline-none text-sm font-mono transition-colors disabled:opacity-50"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="message" className="block text-xs font-mono uppercase tracking-wider text-zinc-400 mb-2">
+                    {t.contact.form.message}
+                  </label>
+                  <textarea
+                    id="message"
+                    rows={5}
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder={t.contact.form.messagePlaceholder}
+                    required
+                    disabled={status === 'loading'}
+                    className="w-full px-4 py-3.5 bg-zinc-900 border border-zinc-800 text-white placeholder-zinc-600 focus:border-white focus:outline-none text-sm font-mono transition-colors resize-none disabled:opacity-50"
+                  />
+                </div>
+
+                {status === 'success' && (
+                  <div className="p-4 bg-emerald-950/40 border border-emerald-500/40 text-emerald-400 text-xs font-mono">
+                    ✓ {successMessage}
+                  </div>
+                )}
+
+                {status === 'error' && (
+                  <div className="p-4 bg-red-950/40 border border-red-500/40 text-red-400 text-xs font-mono">
+                    ✕ {errorMessage}
+                  </div>
+                )}
+                
+                <button
+                  type="submit"
+                  disabled={status === 'loading'}
+                  className="w-full px-8 py-4 bg-white text-zinc-950 font-mono text-xs font-semibold uppercase tracking-widest hover:bg-zinc-200 border border-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99]"
+                >
+                  {status === 'loading' ? (
+                    <>
+                      <span className="w-3 h-3 border-2 border-zinc-950 border-t-transparent animate-spin inline-block" />
+                      <span>{sendingText}</span>
+                    </>
+                  ) : (
+                    <span>{t.contact.form.submit} →</span>
+                  )}
+                </button>
+              </form>
+            </div>
+          }
+        />
       </div>
-    </section>
+    </SectionReveal>
   );
 }
+
+
+
+
+
 
 
 

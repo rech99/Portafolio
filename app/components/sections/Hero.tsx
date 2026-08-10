@@ -1,63 +1,127 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import { useLanguage } from '@/app/lib/useLanguage';
 import { translations } from '@/app/lib/translations';
-import { RetroComputer3D } from '@/app/components/ui/RetroComputer3D';
 
 export function Hero() {
   const { language } = useLanguage();
   const t = translations[language];
 
+  const locationText = language === 'es' 
+    ? 'Disponible para trabajo remoto' 
+    : 'Available for remote work';
+
+  
+  const overviewTitle = language === 'es' ? 'Resumen Técnico' : 'Technical Summary';
+
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center px-6 pt-20 glow-ambient-pure-center"
+      className="w-full h-auto md:h-full flex flex-col justify-center py-2 overflow-hidden"
     >
-      {/* Floating digital space particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-[12%] left-[5%] text-cyan-400 font-mono text-xs select-none animate-float-slow">SELECT * FROM users;</div>
-        <div className="absolute top-[68%] left-[7%] text-cyan-400 font-mono text-[10px] md:text-xs select-none animate-float-slower" style={{ animationDelay: '2s' }}>useEffect(() =&gt; &#123;&#125;, [])</div>
-        <div className="absolute top-[22%] right-[8%] text-cyan-400 font-mono text-xs select-none animate-float-medium" style={{ animationDelay: '1s' }}>async function fetchSystem()</div>
-        <div className="absolute top-[75%] right-[10%] text-cyan-400 font-mono text-xs select-none animate-float-slow" style={{ animationDelay: '3.5s' }}>def run_migrations():</div>
-        <div className="absolute top-[42%] left-[82%] text-cyan-400 font-mono text-xs select-none animate-float-slower">class DistributedService</div>
-        <div className="absolute top-[52%] left-[4%] text-cyan-400 font-mono text-xs select-none animate-float-medium" style={{ animationDelay: '1.5s' }}>docker-compose up -d</div>
-        <div className="absolute top-[15%] left-[42%] text-cyan-400 font-mono text-[10px] select-none animate-float-fast" style={{ animationDelay: '0.5s' }}>redis.set("cache_key", val)</div>
-        <div className="absolute top-[82%] left-[46%] text-cyan-400 font-mono text-[10px] select-none animate-float-fast" style={{ animationDelay: '4s' }}>git commit -m "build: init"</div>
-        <div className="absolute top-[30%] left-[80%] text-cyan-400 font-mono text-[10px] select-none animate-float-slow" style={{ animationDelay: '5s' }}>[GET /api/v1/status]</div>
-        <div className="absolute top-[58%] right-[82%] text-cyan-400 font-mono text-[10px] select-none animate-float-slower" style={{ animationDelay: '3s' }}>postgresql://db:5432</div>
-        <div className="absolute top-[88%] left-[8%] text-cyan-400 font-mono text-[10px] select-none animate-float-slow" style={{ animationDelay: '6s' }}>npm run dev</div>
-        <div className="absolute top-[35%] left-[10%] text-cyan-400 font-mono text-[10px] select-none animate-float-medium" style={{ animationDelay: '2.5s' }}>const [data, setData]</div>
-      </div>
+      <div className="max-w-6xl mx-auto w-full my-auto">
 
-      <div className="max-w-4xl text-center z-10">
-        {/* 3D Retro Computer */}
-        <RetroComputer3D />
 
-        <h1 className="text-3xl md:text-5xl font-extrabold mb-6 font-mono tracking-widest text-cyan-400 uppercase text-glow-cyan">
-          &gt; {t.hero.title}
-          <span className="text-cyan-400 animate-pulse">_</span>
-        </h1>
-        
-        <p className="text-sm md:text-base text-slate-400 mb-10 max-w-2xl mx-auto text-balance font-mono leading-relaxed">
-          <span className="text-cyan-500/50">// </span>
-          {t.hero.subtitle}
-        </p>
-        
-        <div className="flex gap-5 justify-center flex-wrap">
-          <a 
-            href="#projects"
-            className="px-8 py-4 bg-cyan-950/40 border border-cyan-500/80 text-cyan-400 font-mono text-xs uppercase tracking-widest hover:bg-cyan-500/20 shadow-[0_0_15px_rgba(6,182,212,0.15)] hover:shadow-[0_0_25px_rgba(6,182,212,0.35)] transition-all duration-300 rounded-none"
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          {/* Left Main Content (7 cols) - Slide in from Left */}
+          <motion.div 
+            initial={{ opacity: 0, x: -100, filter: 'blur(8px)' }}
+            animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+            transition={{ type: 'spring', stiffness: 55, damping: 16, delay: 0.1 }}
+            className="lg:col-span-7 space-y-4 sm:space-y-6 md:space-y-8"
           >
-            {t.hero.ctaPrimary}
-          </a>
-          <a 
-            href="#contact"
-            className="px-8 py-4 bg-transparent border border-slate-700 hover:border-cyan-500/50 text-slate-400 hover:text-cyan-400 font-mono text-xs uppercase tracking-widest transition-all duration-300 rounded-none"
+            
+            {/* Location & Status Badge */}
+            <div className="inline-flex items-center gap-2 border border-zinc-800 bg-zinc-900/60 px-3 py-1 text-[11px] sm:text-xs text-zinc-300">
+              <span className="w-2 h-2 bg-emerald-500 rounded-full inline-block" />
+              <span>{locationText}</span>
+            </div>
+
+            {/* Main Headline */}
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-semibold tracking-tight text-white leading-[1.1]">
+              {t.hero.title}
+            </h1>
+
+            {/* Subtitle */}
+            <p className="text-xs sm:text-base text-zinc-400 font-normal leading-relaxed max-w-xl">
+              {t.hero.subtitle}
+            </p>
+
+            {/* Action CTAs */}
+            <div className="flex items-center gap-3 flex-wrap pt-1">
+              <a 
+                href="#projects"
+                className="px-5 py-2.5 sm:px-6 sm:py-3 bg-white text-zinc-950 text-xs font-semibold uppercase tracking-wider hover:bg-zinc-200 border border-white transition-colors"
+              >
+                {t.hero.ctaPrimary} →
+              </a>
+              <a 
+                href="#contact"
+                className="px-5 py-2.5 sm:px-6 sm:py-3 bg-transparent text-zinc-300 text-xs uppercase tracking-wider border border-zinc-800 hover:border-zinc-500 hover:text-white transition-colors"
+              >
+                {t.hero.ctaSecondary}
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Right Column: Clean Technical Summary Card (5 cols) - Slide in from Right */}
+          <motion.div 
+            initial={{ opacity: 0, x: 100, filter: 'blur(8px)' }}
+            animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+            transition={{ type: 'spring', stiffness: 55, damping: 16, delay: 0.25 }}
+            className="lg:col-span-5 border border-zinc-800 bg-zinc-950 divide-y divide-zinc-800 text-xs mt-4 lg:mt-0"
           >
-            {t.hero.ctaSecondary}
-          </a>
+            <div className="p-3.5 sm:p-5 font-semibold text-white tracking-wide uppercase bg-zinc-900/40">
+              {overviewTitle}
+            </div>
+
+            <div className="p-3.5 sm:p-5 space-y-1">
+              <span className="text-orange-500 font-mono text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider block">
+                01. Engineering Focus
+              </span>
+              <p className="text-zinc-100 font-medium text-xs sm:text-sm leading-snug">
+                Distributed Systems & Fullstack Architecture
+              </p>
+              <p className="text-zinc-400 text-[11px] sm:text-xs">
+                Python (Django), TypeScript, Next.js, React, Node.js
+              </p>
+            </div>
+
+            <div className="p-3.5 sm:p-5 space-y-1">
+              <span className="text-orange-500 font-mono text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider block">
+                02. Data & Infrastructure
+              </span>
+              <p className="text-zinc-100 font-medium text-xs sm:text-sm leading-snug">
+                Relational & NoSQL Database Optimization
+              </p>
+              <p className="text-zinc-400 text-[11px] sm:text-xs">
+                PostgreSQL, MongoDB, Redis, Celery Async Queues
+              </p>
+            </div>
+
+            <div className="p-3.5 sm:p-5 space-y-1">
+              <span className="text-orange-500 font-mono text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider block">
+                03. Security & Delivery
+              </span>
+              <p className="text-zinc-100 font-medium text-xs sm:text-sm leading-snug">
+                OWASP Security Standards & Agile Methodologies
+              </p>
+              <p className="text-zinc-400 text-[11px] sm:text-xs">
+                Scrum, Kanban, PMBOK, REST API Interoperability
+              </p>
+            </div>
+          </motion.div>
+
+
         </div>
       </div>
     </section>
   );
 }
+
+
+
+

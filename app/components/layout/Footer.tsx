@@ -9,29 +9,41 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-12 px-6 border-t border-cyan-500/20 bg-[#030712] font-mono text-xs">
-      <div className="max-w-6xl mx-auto text-center space-y-4">
-        <p className="text-slate-500 text-[10px]">
-          // STATUS: ONLINE // CACHE: ACTIVE // SYSTEM: PORTAFOLIO_V1
+    <footer className="w-full py-2.5 px-4 sm:px-6 border-t border-zinc-800/80 bg-zinc-950/90 backdrop-blur-sm font-mono text-[11px] text-zinc-500">
+      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+        <p className="text-zinc-400 text-center sm:text-left">
+          © {currentYear} {t.siteConfig.name}
         </p>
-        
-        <p className="text-slate-400">
-          © {currentYear} {t.siteConfig.name}. {t.footer.rights}
-        </p>
-        
-        <nav className="flex gap-3 justify-center">
-          {t.siteConfig.socials.map((social) => (
-            <a
-              key={social.name}
-              href={social.url}
-              className="text-cyan-400 hover:text-cyan-300 transition-colors border border-cyan-500/10 hover:border-cyan-500/30 px-3 py-1 rounded bg-[#080d1c]/40"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              [{social.name.toLowerCase()}]
-            </a>
-          ))}
-        </nav>
+
+
+
+        <div className="flex items-center gap-3 sm:gap-4 text-zinc-400">
+          <a
+            href="https://www.linkedin.com/in/raul-enrique-campbell-hidalgo-80868527a/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition-colors"
+          >
+            LINKEDIN ↗
+          </a>
+
+          <span>•</span>
+          <a
+            href="https://github.com/rech99"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition-colors"
+          >
+            GITHUB ↗
+          </a>
+          <span>•</span>
+          <a
+            href="mailto:rech_99@hotmail.com"
+            className="hover:text-white transition-colors"
+          >
+            EMAIL ↗
+          </a>
+        </div>
       </div>
     </footer>
   );
