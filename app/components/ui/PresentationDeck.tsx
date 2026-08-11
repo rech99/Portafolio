@@ -107,22 +107,35 @@ export function PresentationDeck({ slides, footer }: PresentationDeckProps) {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isDeckMode, slides.length]);
 
+  // Reset scroll to top whenever slide changes on mobile
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [activeIndex]);
+
   // Horizontal Touch Swipe Support for Mobile Slide Transitions
   useEffect(() => {
     if (!isDeckMode) return;
 
     let touchStartX = 0;
+    let touchStartY = 0;
 
     const handleTouchStart = (e: TouchEvent) => {
-      touchStartX = e.touches[0].clientX;
+      if (e.touches.length > 0) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }
     };
 
     const handleTouchEnd = (e: TouchEvent) => {
-      const touchEndX = e.changedTouches[0].clientX;
-      const diffX = touchStartX - touchEndX;
+      if (e.changedTouches.length === 0) return;
 
-      // Horizontal Lateral Touch Swipe Gesture threshold (40px)
-      if (Math.abs(diffX) > 40) {
+      const touchEndX = e.changedTouches[0].clientX;
+      const touchEndY = e.changedTouches[0].clientY;
+      const diffX = touchStartX - touchEndX;
+      const diffY = touchStartY - touchEndY;
+
+      // Only trigger horizontal slide change if horizontal movement is dominant over vertical scroll
+      if (Math.abs(diffX) > 50 && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
         if (diffX > 0) {
           // Swipe Left -> Next Slide
           setActiveIndex((prev) => Math.min(prev + 1, slides.length - 1));
@@ -208,7 +221,7 @@ export function PresentationDeck({ slides, footer }: PresentationDeckProps) {
           </div>
 
           {/* ── MOBILE: natural scroll, no fixed heights, no dvh ────── */}
-          <div className="md:hidden w-full max-w-full overflow-x-hidden bg-zinc-950 bg-grid-pattern pt-16 pb-12">
+          <div className="md:hidden w-full max-w-full overflow-x-hidden bg-zinc-950 bg-grid-pattern pt-16 pb-24">
             <AnimatePresence mode="wait">
               <motion.div
                 key={slides[activeIndex].id}

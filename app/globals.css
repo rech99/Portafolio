@@ -22,7 +22,9 @@
     scroll-behavior: smooth;
     background-color: #09090b;
     color: #fafafa;
-    overflow-x: clip;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   body {
@@ -31,8 +33,10 @@
     color: #a1a1aa;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+    max-width: 100%;
     overflow-x: hidden;
-    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
   }
 
   /* Sharp Custom Scrollbar */
