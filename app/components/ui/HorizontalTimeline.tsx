@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export interface TimelineItem {
   id: string;
+  shortTitle?: string;
   title: string;
   companyOrInstitution: string;
   period: string;
@@ -23,29 +24,24 @@ export function HorizontalTimeline({ items, itemsPerPage = 3 }: HorizontalTimeli
 
   const totalPages = Math.ceil(items.length / itemsPerPage);
 
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % totalPages);
+  };
+
+  const goToPrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + totalPages) % totalPages);
+  };
+
+  // Determine grid columns dynamically based on items count
+  const gridColsClass = items.length === 2 ? 'grid-cols-2' : 'grid-cols-3';
   const visibleItems = items.slice(
     currentIndex * itemsPerPage,
     (currentIndex + 1) * itemsPerPage
   );
 
-  const goToPrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? totalPages - 1 : prev - 1));
-  };
-
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev === totalPages - 1 ? 0 : prev + 1));
-  };
-
-  const gridColsClass = 
-    visibleItems.length === 1 
-      ? 'grid-cols-1' 
-      : visibleItems.length === 2 
-      ? 'grid-cols-2' 
-      : 'grid-cols-3';
-
   return (
-    <div className="w-full space-y-3 md:space-y-4">
-      {/* MOBILE VIEW (< md): Single-Card Carousel with Responsive Max Height & Internal Scroll */}
+    <div className="w-full">
+      {/* MOBILE VIEW (< md): Single-Card Horizontal Tab Switcher */}
       <div className="block md:hidden space-y-3">
         {/* Mobile Tab Selector Bar */}
         <div className="flex items-center gap-1 border border-zinc-800 p-1 bg-zinc-950/80 overflow-x-auto">
@@ -61,7 +57,7 @@ export function HorizontalTimeline({ items, itemsPerPage = 3 }: HorizontalTimeli
                     : 'text-zinc-400 hover:text-white'
                 }`}
               >
-                0{idx + 1}. {item.companyOrInstitution.split(' ')[0]}
+                0{idx + 1}. {item.shortTitle || item.companyOrInstitution.split(' ')[0]}
               </button>
             );
           })}

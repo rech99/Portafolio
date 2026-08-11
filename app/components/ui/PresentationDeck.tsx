@@ -39,11 +39,16 @@ export function PresentationDeck({ slides, footer }: PresentationDeckProps) {
     const isInsideScrollable = (target: HTMLElement | null): boolean => {
       let curr = target;
       while (curr && curr !== document.body && curr !== document.documentElement) {
+        // Stop inspection if we reach the main presentation deck slide containers
+        if (curr.hasAttribute('data-deck-container')) {
+          break;
+        }
+
         const style = window.getComputedStyle(curr);
         const overflowY = style.overflowY;
         const isScrollable = overflowY === 'auto' || overflowY === 'scroll';
         
-        // While hovering over an inner scrollable container, block section slide changes unconditionally
+        // While hovering over an inner scrollable card box, block section slide changes
         if (isScrollable && curr.scrollHeight > curr.clientHeight + 4) {
           return true;
         }
@@ -51,6 +56,7 @@ export function PresentationDeck({ slides, footer }: PresentationDeckProps) {
       }
       return false;
     };
+
 
     const handleWheel = (e: WheelEvent) => {
       const target = e.target as HTMLElement;
@@ -102,21 +108,59 @@ export function PresentationDeck({ slides, footer }: PresentationDeckProps) {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isDeckMode, slides.length]);
 
-  // Touch Swipe Support
+  // Touch Swipe Support with Smart Mobile Reading Protection
   useEffect(() => {
     if (!isDeckMode) return;
 
     let touchStartY = 0;
+    let touchStartTarget: HTMLElement | null = null;
 
     const handleTouchStart = (e: TouchEvent) => {
       touchStartY = e.touches[0].clientY;
+      touchStartTarget = e.target as HTMLElement;
+    };
+
+    const isContainerScrollable = (target: HTMLElement | null, diffY: number): boolean => {
+      let curr = target;
+      while (curr && curr !== document.body && curr !== document.documentElement) {
+        const style = window.getComputedStyle(curr);
+        const overflowY = style.overflowY;
+        const isScrollable = overflowY === 'auto' || overflowY === 'scroll';
+        
+        if (isScrollable && curr.scrollHeight > curr.clientHeight + 10) {
+          if (diffY > 0) {
+            // Dragging up / scrolling down: allow native scroll if not at bottom
+            if (Math.ceil(curr.scrollTop + curr.clientHeight) < curr.scrollHeight - 10) {
+              return true;
+            }
+          } else if (diffY < 0) {
+            // Dragging down / scrolling up: allow native scroll if not at top
+            if (curr.scrollTop > 10) {
+              return true;
+            }
+          }
+        }
+
+        if (curr.hasAttribute('data-deck-container')) {
+          break;
+        }
+
+        curr = curr.parentElement;
+      }
+      return false;
     };
 
     const handleTouchEnd = (e: TouchEvent) => {
       const touchEndY = e.changedTouches[0].clientY;
       const diffY = touchStartY - touchEndY;
 
-      if (Math.abs(diffY) > 50) {
+      // Threshold of 60px for intentional slide swipe
+      if (Math.abs(diffY) > 60) {
+        if (isContainerScrollable(touchStartTarget, diffY)) {
+          // User is dragging to read content inside a scrollable section! DO NOT CHANGE SLIDE!
+          return;
+        }
+
         if (diffY > 0) {
           setActiveIndex((prev) => Math.min(prev + 1, slides.length - 1));
         } else {
@@ -132,6 +176,7 @@ export function PresentationDeck({ slides, footer }: PresentationDeckProps) {
       window.removeEventListener('touchend', handleTouchEnd);
     };
   }, [isDeckMode, slides.length]);
+
 
   // Listen for hash changes, click events, or custom deck:goto-slide events
   useEffect(() => {
@@ -171,7 +216,8 @@ export function PresentationDeck({ slides, footer }: PresentationDeckProps) {
     <div className="relative w-full">
       {isDeckMode ? (
         /* Presentation Deck View - Scale & Reveal from Center with Safari Support */
-        <div className="fixed inset-0 top-16 pb-12 w-full h-[calc(100vh-4rem)] h-[calc(100dvh-4rem)] overflow-hidden bg-zinc-950 bg-grid-pattern flex flex-col justify-center">
+        <div data-deck-container="true" className="fixed inset-0 top-16 pb-12 w-full h-[calc(100vh-4rem)] h-[calc(100dvh-4rem)] overflow-y-auto md:overflow-hidden bg-zinc-950 bg-grid-pattern flex flex-col justify-start md:justify-center">
+
           <AnimatePresence mode="wait">
             <motion.div
               key={slides[activeIndex].id}
@@ -197,24 +243,24 @@ export function PresentationDeck({ slides, footer }: PresentationDeckProps) {
                 backfaceVisibility: 'hidden',
                 WebkitBackfaceVisibility: 'hidden'
               }}
-              className="w-full h-full overflow-y-auto md:overflow-hidden flex flex-col justify-start md:justify-center items-center p-2 sm:p-4 md:p-6"
+              className="w-full min-h-full flex flex-col justify-start md:justify-center items-center p-2 sm:p-4 md:p-6"
             >
 
-              <div className="w-full max-w-6xl mx-auto px-3 sm:px-6 my-auto h-auto md:h-[calc(100vh-8rem)] md:h-[calc(100dvh-8rem)] md:min-h-[500px] md:max-h-[640px] flex flex-col justify-center overflow-y-auto md:overflow-visible py-2 md:py-0">
+              <div data-deck-container="true" className="w-full max-w-6xl mx-auto px-3 sm:px-6 my-0 md:my-auto h-auto md:h-[calc(100vh-8rem)] md:h-[calc(100dvh-8rem)] md:min-h-[500px] md:max-h-[640px] flex flex-col justify-start md:justify-center py-4 md:py-0 pb-12 md:pb-0">
                 {slides[activeIndex].component}
               </div>
-
-
 
             </motion.div>
           </AnimatePresence>
 
           {/* Persistent Global Footer for All Sections */}
+
           {footer && (
             <div className="fixed bottom-0 left-0 right-0 z-40">
               {footer}
             </div>
           )}
+
         </div>
       ) : (
 

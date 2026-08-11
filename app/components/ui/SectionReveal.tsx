@@ -60,7 +60,8 @@ interface SplitRevealProps {
 
 export function SplitReveal({ left, right, className = '' }: SplitRevealProps) {
   return (
-    <div className={`grid grid-cols-1 lg:grid-cols-12 gap-12 items-start ${className}`}>
+    <div className={`grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-start ${className}`}>
+
       {/* Left side slides from left */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}

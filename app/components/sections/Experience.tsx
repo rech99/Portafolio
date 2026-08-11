@@ -17,8 +17,9 @@ export function Experience() {
   }));
 
   return (
-    <SectionReveal id="experience" className="py-2 w-full h-auto md:h-full flex flex-col justify-center" direction="right">
-      <div className="max-w-6xl mx-auto w-full my-auto">
+    <SectionReveal id="experience" className="py-2 w-full h-auto md:h-full flex flex-col justify-start md:justify-center" direction="right">
+      <div className="max-w-6xl mx-auto w-full my-0 md:my-auto">
+
 
 
 

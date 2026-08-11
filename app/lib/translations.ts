@@ -65,6 +65,7 @@ export const translations = {
       items: [
         {
           id: 'bachelors',
+          shortTitle: 'Bachelor',
           degree: 'Multimedia Production Engineering',
           institution: 'Universidad LaSalle Noroeste',
           period: '2018 - 2023',
@@ -72,13 +73,16 @@ export const translations = {
         },
         {
           id: 'masters',
+          shortTitle: 'Masters',
           degree: 'Master\'s in Software Engineering and Distributed Systems',
+
           institution: 'Universidad de La Rioja México',
           period: '2025 - 2026 (Final semester)',
           details: 'Special mention: Includes a Project Management Diploma taught by the University of Miami.'
         },
       ]
     },
+
 
     skills: {
       title: 'Skills & Technologies',
@@ -288,6 +292,7 @@ export const translations = {
       items: [
         {
           id: 'bachelors',
+          shortTitle: 'Licenciatura',
           degree: 'Ingeniería en Producción Multimedia',
           institution: 'Universidad LaSalle Noroeste',
           period: '2018 - 2023',
@@ -295,6 +300,7 @@ export const translations = {
         },
         {
           id: 'masters',
+          shortTitle: 'Maestría',
           degree: 'Maestría en Ingeniería de Software y Sistemas Distribuidos',
           institution: 'Universidad de La Rioja México',
           period: '2025 - 2026 (Último semestre)',
@@ -302,6 +308,7 @@ export const translations = {
         },
       ]
     },
+
 
     skills: {
       title: 'Habilidades y Tecnologías',

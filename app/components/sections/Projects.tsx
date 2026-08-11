@@ -41,8 +41,9 @@ export function Projects() {
   );
 
   return (
-    <SectionReveal id="projects" className="py-2 w-full h-auto md:h-full flex flex-col justify-center">
-      <div className="max-w-6xl mx-auto w-full my-auto">
+    <SectionReveal id="projects" className="py-2 w-full h-auto md:h-full flex flex-col justify-start md:justify-center">
+      <div className="max-w-6xl mx-auto w-full my-0 md:my-auto">
+
 
 
         <SectionHeading number="05">{t.projects.title}</SectionHeading>
@@ -78,7 +79,8 @@ export function Projects() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -25 }}
               transition={{ duration: 0.3 }}
-              className="border border-zinc-800 bg-zinc-950 flex flex-col hover:border-zinc-700 transition-colors w-full h-[360px] justify-between overflow-hidden"
+              className="border border-zinc-800 bg-zinc-950 flex flex-col hover:border-zinc-700 transition-colors w-full h-auto max-h-[440px] justify-start overflow-hidden"
+
             >
               {/* Project Image */}
               <div className="h-36 relative w-full overflow-hidden bg-zinc-900 border-b border-zinc-800 flex-shrink-0">

@@ -10,15 +10,18 @@ export function Education() {
 
   const timelineItems = t.education.items.map((edu) => ({
     id: edu.id,
+    shortTitle: edu.shortTitle,
     title: edu.degree,
     companyOrInstitution: edu.institution,
     period: edu.period,
     details: edu.details,
   }));
 
+
   return (
-    <SectionReveal id="education" className="py-2 w-full h-auto md:h-full flex flex-col justify-center" direction="left">
-      <div className="max-w-6xl mx-auto w-full my-auto">
+    <SectionReveal id="education" className="py-2 w-full h-auto md:h-full flex flex-col justify-start md:justify-center" direction="left">
+      <div className="max-w-6xl mx-auto w-full my-0 md:my-auto">
+
 
 
 
