@@ -19,7 +19,11 @@ export default function Home() {
     <main className="min-h-screen bg-zinc-950 text-zinc-100 bg-grid-pattern selection:bg-orange-500 selection:text-zinc-950">
       <Navbar />
       <HUDNavigation />
-      <PresentationDeck slides={slides} footer={<Footer />} />
+      <PresentationDeck slides={slides} />
+      {/* Footer: always fixed, never re-mounts between slides */}
+      <div className="fixed bottom-0 left-0 right-0 z-40">
+        <Footer />
+      </div>
     </main>
   );
 }
