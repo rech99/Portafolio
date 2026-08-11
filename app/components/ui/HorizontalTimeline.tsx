@@ -40,18 +40,18 @@ export function HorizontalTimeline({ items, itemsPerPage = 3 }: HorizontalTimeli
   );
 
   return (
-    <div className="w-full">
+    <div className="w-full overflow-x-hidden">
       {/* MOBILE VIEW (< md): Single-Card Horizontal Tab Switcher */}
       <div className="block md:hidden space-y-3">
         {/* Mobile Tab Selector Bar */}
-        <div className="flex items-center gap-1 border border-zinc-800 p-1 bg-zinc-950/80 overflow-x-auto">
+        <div className="flex items-center border border-zinc-800 p-1 bg-zinc-950/80">
           {items.map((item, idx) => {
             const isActive = mobileIndex === idx;
             return (
               <button
                 key={item.id}
                 onClick={() => setMobileIndex(idx)}
-                className={`flex-1 min-w-[90px] py-1 px-2 text-[10px] font-mono uppercase tracking-wider transition-colors text-center truncate cursor-pointer ${
+                className={`flex-1 py-1 px-2 text-[10px] font-mono uppercase tracking-wider transition-colors text-center truncate cursor-pointer ${
                   isActive
                     ? 'bg-orange-500 text-zinc-950 font-bold'
                     : 'text-zinc-400 hover:text-white'
@@ -180,7 +180,7 @@ export function HorizontalTimeline({ items, itemsPerPage = 3 }: HorizontalTimeli
 
                     {/* Event Card Box - Top Orange Border appears dynamically on Hover over container */}
                     <article className={`w-full border border-zinc-800 bg-zinc-950 p-4 sm:p-5 space-y-2.5 group-hover:border-zinc-700 group-hover:border-t-2 group-hover:border-t-orange-500 transition-all flex flex-col overflow-hidden ${
-                      hasBullets ? 'h-[270px] sm:h-[300px] justify-between' : 'h-auto min-h-[130px] justify-start'
+                      hasBullets ? 'h-auto md:h-[270px] sm:md:h-[300px] justify-between' : 'h-auto min-h-[130px] justify-start'
                     }`}>
 
                       <header className={`space-y-1 w-full flex-shrink-0 ${hasBullets ? 'border-b border-zinc-800 pb-2' : 'border-b border-zinc-800/60 pb-2'}`}>

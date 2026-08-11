@@ -195,7 +195,7 @@ export function Projects() {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
-                className="border border-zinc-800 bg-zinc-950 flex flex-col hover:border-zinc-700 transition-colors w-full h-[400px] justify-between overflow-hidden group"
+                className="border border-zinc-800 bg-zinc-950 flex flex-col hover:border-zinc-700 transition-colors w-full h-auto md:h-[400px] justify-between overflow-hidden group"
               >
                 {/* Project Image */}
                 <div className="h-36 relative w-full overflow-hidden bg-zinc-900 border-b border-zinc-800 flex-shrink-0">

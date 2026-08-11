@@ -16,7 +16,7 @@ export default function Home() {
 
 
   return (
-    <main className="min-h-screen bg-zinc-950 text-zinc-100 bg-grid-pattern selection:bg-orange-500 selection:text-zinc-950">
+    <main className="min-h-screen overflow-x-hidden bg-zinc-950 text-zinc-100 bg-grid-pattern selection:bg-orange-500 selection:text-zinc-950">
       <Navbar />
       <HUDNavigation />
       <PresentationDeck slides={slides} />

@@ -181,65 +181,58 @@ export function PresentationDeck({ slides, footer }: PresentationDeckProps) {
   return (
     <div className="relative w-full">
       {isDeckMode ? (
-        /* Presentation Deck View - Scale & Reveal from Center with Safari Support */
-        <div data-deck-container="true" className="fixed inset-0 top-16 pb-12 w-full h-[calc(100vh-4rem)] h-[calc(100dvh-4rem)] overflow-y-auto md:overflow-hidden bg-zinc-950 bg-grid-pattern flex flex-col justify-start md:justify-center">
+        <>
+          {/* ── DESKTOP: fixed full-screen deck ─────────────────────── */}
+          <div
+            data-deck-container="true"
+            className="hidden md:flex fixed inset-0 top-16 w-full h-[calc(100dvh-4rem)] overflow-hidden bg-zinc-950 bg-grid-pattern flex-col justify-center"
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={slides[activeIndex].id}
+                initial={{ opacity: 0, scale: 0.94 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.05 }}
+                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                style={{ willChange: 'transform, opacity', transform: 'translateZ(0)', backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
+                className="w-full h-full flex flex-col justify-center items-center p-6"
+              >
+                <div
+                  data-deck-container="true"
+                  className="w-full max-w-6xl mx-auto px-4 sm:px-6 h-full flex flex-col justify-center"
+                >
+                  {slides[activeIndex].component}
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={slides[activeIndex].id}
-              initial={{
-                opacity: 0,
-                scale: 0.94,
-              }}
-              animate={{
-                opacity: 1,
-                scale: 1,
-              }}
-              exit={{
-                opacity: 0,
-                scale: 1.05,
-              }}
-              transition={{
-                duration: 0.45,
-                ease: [0.16, 1, 0.3, 1]
-              }}
-              style={{ 
-                willChange: 'transform, opacity',
-                transform: 'translateZ(0)',
-                backfaceVisibility: 'hidden',
-                WebkitBackfaceVisibility: 'hidden'
-              }}
-              className="w-full min-h-full flex flex-col justify-start md:justify-center items-center p-2 sm:p-4 md:p-6"
-            >
-
-              <div data-deck-container="true" className="w-full max-w-6xl mx-auto px-3 sm:px-6 my-0 md:my-auto h-auto md:h-[calc(100vh-8rem)] md:h-[calc(100dvh-8rem)] md:min-h-[500px] md:max-h-[640px] flex flex-col justify-start md:justify-center py-4 md:py-0 pb-12 md:pb-0">
+          {/* ── MOBILE: natural scroll, no fixed heights, no dvh ────── */}
+          <div className="md:hidden w-full max-w-full overflow-x-hidden bg-zinc-950 bg-grid-pattern pt-16 pb-12">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={slides[activeIndex].id}
+                initial={{ opacity: 0, x: 24 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -24 }}
+                transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                style={{ willChange: 'transform, opacity' }}
+                className="w-full max-w-full overflow-x-hidden px-4 sm:px-6"
+              >
                 {slides[activeIndex].component}
-              </div>
-
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Persistent Global Footer for All Sections */}
-
-          {footer && (
-            <div className="fixed bottom-0 left-0 right-0 z-40">
-              {footer}
-            </div>
-          )}
-
-        </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </>
       ) : (
-
-
-
         /* Continuous Scroll View Fallback */
         <div className="w-full">
           {slides.map((slide) => (
             <div key={slide.id}>{slide.component}</div>
           ))}
-          {footer}
         </div>
       )}
     </div>
   );
 }
+

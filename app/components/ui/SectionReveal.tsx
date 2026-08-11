@@ -45,7 +45,7 @@ export function SectionReveal({
         backfaceVisibility: 'hidden',
         WebkitBackfaceVisibility: 'hidden'
       }}
-      className={`relative overflow-hidden w-full box-border ${className}`}
+      className={`relative overflow-x-hidden w-full box-border ${className}`}
     >
       {children}
     </motion.section>
