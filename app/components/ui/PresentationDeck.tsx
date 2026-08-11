@@ -108,62 +108,27 @@ export function PresentationDeck({ slides, footer }: PresentationDeckProps) {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isDeckMode, slides.length]);
 
-  // Touch Swipe Support with Smart Mobile Reading Protection
+  // Horizontal Touch Swipe Support for Mobile Slide Transitions
   useEffect(() => {
     if (!isDeckMode) return;
 
-    let touchStartY = 0;
-    let touchStartTarget: HTMLElement | null = null;
+    let touchStartX = 0;
 
     const handleTouchStart = (e: TouchEvent) => {
-      touchStartY = e.touches[0].clientY;
-      touchStartTarget = e.target as HTMLElement;
-    };
-
-    const isContainerScrollable = (target: HTMLElement | null, diffY: number): boolean => {
-      let curr = target;
-      while (curr && curr !== document.body && curr !== document.documentElement) {
-        const style = window.getComputedStyle(curr);
-        const overflowY = style.overflowY;
-        const isScrollable = overflowY === 'auto' || overflowY === 'scroll';
-        
-        if (isScrollable && curr.scrollHeight > curr.clientHeight + 10) {
-          if (diffY > 0) {
-            // Dragging up / scrolling down: allow native scroll if not at bottom
-            if (Math.ceil(curr.scrollTop + curr.clientHeight) < curr.scrollHeight - 10) {
-              return true;
-            }
-          } else if (diffY < 0) {
-            // Dragging down / scrolling up: allow native scroll if not at top
-            if (curr.scrollTop > 10) {
-              return true;
-            }
-          }
-        }
-
-        if (curr.hasAttribute('data-deck-container')) {
-          break;
-        }
-
-        curr = curr.parentElement;
-      }
-      return false;
+      touchStartX = e.touches[0].clientX;
     };
 
     const handleTouchEnd = (e: TouchEvent) => {
-      const touchEndY = e.changedTouches[0].clientY;
-      const diffY = touchStartY - touchEndY;
+      const touchEndX = e.changedTouches[0].clientX;
+      const diffX = touchStartX - touchEndX;
 
-      // Threshold of 60px for intentional slide swipe
-      if (Math.abs(diffY) > 60) {
-        if (isContainerScrollable(touchStartTarget, diffY)) {
-          // User is dragging to read content inside a scrollable section! DO NOT CHANGE SLIDE!
-          return;
-        }
-
-        if (diffY > 0) {
+      // Horizontal Lateral Touch Swipe Gesture threshold (40px)
+      if (Math.abs(diffX) > 40) {
+        if (diffX > 0) {
+          // Swipe Left -> Next Slide
           setActiveIndex((prev) => Math.min(prev + 1, slides.length - 1));
         } else {
+          // Swipe Right -> Previous Slide
           setActiveIndex((prev) => Math.max(prev - 1, 0));
         }
       }
@@ -176,6 +141,8 @@ export function PresentationDeck({ slides, footer }: PresentationDeckProps) {
       window.removeEventListener('touchend', handleTouchEnd);
     };
   }, [isDeckMode, slides.length]);
+
+
 
 
   // Listen for hash changes, click events, or custom deck:goto-slide events

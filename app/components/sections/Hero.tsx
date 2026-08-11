@@ -15,14 +15,36 @@ export function Hero() {
   
   const overviewTitle = language === 'es' ? 'Resumen Técnico' : 'Technical Summary';
 
+  const stats = [
+    {
+      label: language === 'es' ? 'Experiencia' : 'Experience',
+      value: language === 'es' ? '3+ Años en Desarrollo' : '3+ Years Development',
+    },
+    {
+      label: language === 'es' ? 'Enfoque Principal' : 'Core Focus',
+      value: language === 'es' ? 'Sistemas Fullstack & APIs' : 'Fullstack & API Systems',
+    },
+    {
+      label: language === 'es' ? 'Arquitectura' : 'Architecture',
+      value: language === 'es' ? 'Sistemas Distribuidos & BD' : 'Distributed Systems & DB',
+    },
+    {
+      label: language === 'es' ? 'Ubicación' : 'Location',
+      value: 'Hermosillo, Sonora • Remote',
+    },
+  ];
+
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    window.dispatchEvent(new CustomEvent('deck:goto-slide', { detail: { id } }));
+  };
+
   return (
     <section
       id="hero"
       className="w-full h-auto md:h-full flex flex-col justify-center py-2 overflow-hidden"
     >
       <div className="max-w-6xl mx-auto w-full my-auto">
-
-
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
@@ -51,21 +73,52 @@ export function Hero() {
               {t.hero.subtitle}
             </p>
 
-            {/* Action CTAs */}
-            <div className="flex items-center gap-3 flex-wrap pt-1">
+            {/* Action CTAs - 50%/50% Equal Width on Mobile */}
+            <div className="flex items-center gap-3 w-full sm:w-auto pt-1">
               <a 
                 href="#projects"
-                className="px-5 py-2.5 sm:px-6 sm:py-3 bg-white text-zinc-950 text-xs font-semibold uppercase tracking-wider hover:bg-zinc-200 border border-white transition-colors"
+                onClick={(e) => handleSmoothScroll(e, 'projects')}
+                className="flex-1 sm:flex-initial text-center px-4 py-2.5 sm:px-6 sm:py-3 bg-white text-zinc-950 text-xs font-semibold uppercase tracking-wider hover:bg-zinc-200 border border-white transition-colors whitespace-nowrap cursor-pointer inline-flex items-center justify-center gap-1.5 group"
               >
-                {t.hero.ctaPrimary} →
+                <span>{t.hero.ctaPrimary}</span>
+                <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
               </a>
+
               <a 
                 href="#contact"
-                className="px-5 py-2.5 sm:px-6 sm:py-3 bg-transparent text-zinc-300 text-xs uppercase tracking-wider border border-zinc-800 hover:border-zinc-500 hover:text-white transition-colors"
+                onClick={(e) => handleSmoothScroll(e, 'contact')}
+                className="flex-1 sm:flex-initial text-center px-4 py-2.5 sm:px-6 sm:py-3 bg-transparent text-zinc-300 text-xs uppercase tracking-wider border border-zinc-800 hover:border-zinc-500 hover:text-white transition-colors whitespace-nowrap cursor-pointer"
               >
                 {t.hero.ctaSecondary}
               </a>
             </div>
+
+            {/* Architectural Minimalist Mobile Horizontal Swipe Indicator */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+              className="md:hidden pt-6 flex flex-col items-center justify-center gap-2.5 w-full text-center"
+            >
+              <div className="w-16 h-px bg-zinc-800 relative overflow-hidden">
+                <motion.div
+                  animate={{ x: ['-100%', '100%'] }}
+                  transition={{
+                    duration: 1.8,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                  className="w-1/2 h-full bg-orange-500 shadow-[0_0_8px_#f97316]"
+                />
+              </div>
+
+              <span className="font-mono text-[10px] text-zinc-400 tracking-[0.2em] uppercase font-medium">
+                {language === 'es' ? 'DESLIZAR A LOS LADOS PARA NAVEGAR' : 'SWIPE HORIZONTALLY TO EXPLORE'}
+              </span>
+            </motion.div>
+
           </motion.div>
 
           {/* Right Column: Clean Technical Summary Card (5 cols) - Slide in from Right */}
@@ -76,55 +129,21 @@ export function Hero() {
             style={{ willChange: 'transform, opacity', transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}
             className="lg:col-span-5 border border-zinc-800 bg-zinc-950 divide-y divide-zinc-800 text-xs mt-4 lg:mt-0"
           >
-
             <div className="p-3.5 sm:p-5 font-semibold text-white tracking-wide uppercase bg-zinc-900/40">
               {overviewTitle}
             </div>
 
-            <div className="p-3.5 sm:p-5 space-y-1">
-              <span className="text-orange-500 font-mono text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider block">
-                01. Engineering Focus
-              </span>
-              <p className="text-zinc-100 font-medium text-xs sm:text-sm leading-snug">
-                Distributed Systems & Fullstack Architecture
-              </p>
-              <p className="text-zinc-400 text-[11px] sm:text-xs">
-                Python (Django), TypeScript, Next.js, React, Node.js
-              </p>
-            </div>
-
-            <div className="p-3.5 sm:p-5 space-y-1">
-              <span className="text-orange-500 font-mono text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider block">
-                02. Data & Infrastructure
-              </span>
-              <p className="text-zinc-100 font-medium text-xs sm:text-sm leading-snug">
-                Relational & NoSQL Database Optimization
-              </p>
-              <p className="text-zinc-400 text-[11px] sm:text-xs">
-                PostgreSQL, MongoDB, Redis, Celery Async Queues
-              </p>
-            </div>
-
-            <div className="p-3.5 sm:p-5 space-y-1">
-              <span className="text-orange-500 font-mono text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider block">
-                03. Security & Delivery
-              </span>
-              <p className="text-zinc-100 font-medium text-xs sm:text-sm leading-snug">
-                OWASP Security Standards & Agile Methodologies
-              </p>
-              <p className="text-zinc-400 text-[11px] sm:text-xs">
-                Scrum, Kanban, PMBOK, REST API Interoperability
-              </p>
-            </div>
+            {stats.map((st, i) => (
+              <div key={i} className="p-3.5 sm:p-5 space-y-1">
+                <span className="text-zinc-500 font-mono text-[11px] block uppercase">{st.label}</span>
+                <span className="text-white font-semibold text-xs sm:text-sm block">{st.value}</span>
+              </div>
+            ))}
           </motion.div>
 
-
         </div>
+
       </div>
     </section>
   );
 }
-
-
-
-

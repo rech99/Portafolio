@@ -58,16 +58,23 @@ export function Projects() {
             <div className="flex items-center gap-2">
               <button
                 onClick={goToMobilePrev}
-                className="px-3 py-1 bg-zinc-900 border border-zinc-800 hover:border-white hover:text-white transition-colors cursor-pointer"
+                className="px-2.5 py-1 bg-zinc-900 border border-zinc-800 hover:border-white hover:text-white transition-colors cursor-pointer inline-flex items-center gap-1 text-[11px]"
               >
-                ← PREV
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+                <span>PREV</span>
               </button>
               <button
                 onClick={goToMobileNext}
-                className="px-3 py-1 bg-zinc-900 border border-zinc-800 hover:border-white hover:text-white transition-colors cursor-pointer"
+                className="px-2.5 py-1 bg-zinc-900 border border-zinc-800 hover:border-white hover:text-white transition-colors cursor-pointer inline-flex items-center gap-1 text-[11px]"
               >
-                NEXT →
+                <span>NEXT</span>
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
               </button>
+
             </div>
           </div>
 

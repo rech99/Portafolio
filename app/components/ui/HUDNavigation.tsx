@@ -12,7 +12,6 @@ const sections = [
   { id: 'contact', label: 'Contact' }
 ];
 
-
 export function HUDNavigation() {
   const [activeSection, setActiveSection] = useState('hero');
 
@@ -87,4 +86,3 @@ export function HUDNavigation() {
     </aside>
   );
 }
-
