@@ -68,7 +68,7 @@ export const translations = {
           degree: 'Multimedia Production Engineering',
           institution: 'Universidad LaSalle Noroeste',
           period: '2018 - 2023',
-          details: 'Achievement: Graduated with a meritorious GPA of 9.51. Active participant in tech events like Global Game Jam and Hackathons.'
+          details: 'Achievement: Graduated with a meritorious average score of 9.51/10. Active participant in tech events like Global Game Jam and Hackathons.'
         },
         {
           id: 'masters',

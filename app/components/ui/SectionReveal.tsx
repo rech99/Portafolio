@@ -18,7 +18,7 @@ export function SectionReveal({
   direction = 'left',
   delay = 0 
 }: SectionRevealProps) {
-  const initialX = direction === 'left' ? -120 : direction === 'right' ? 120 : 0;
+  const initialX = direction === 'left' ? -25 : direction === 'right' ? 25 : 0;
 
   return (
     <motion.section
@@ -26,25 +26,26 @@ export function SectionReveal({
       initial={{ 
         opacity: 0, 
         x: initialX,
-        scale: 0.95,
-        filter: 'blur(10px)'
+        scale: 0.98,
       }}
       whileInView={{ 
         opacity: 1, 
         x: 0,
         scale: 1,
-        filter: 'blur(0px)'
       }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ 
-        type: 'spring',
-        stiffness: 55,
-        damping: 16,
-        mass: 0.9,
+        duration: 0.45,
+        ease: [0.16, 1, 0.3, 1],
         delay
       }}
+      style={{
+        willChange: 'transform, opacity',
+        transform: 'translateZ(0)',
+        backfaceVisibility: 'hidden',
+        WebkitBackfaceVisibility: 'hidden'
+      }}
       className={`relative overflow-hidden w-full box-border ${className}`}
-
     >
       {children}
     </motion.section>
@@ -62,10 +63,11 @@ export function SplitReveal({ left, right, className = '' }: SplitRevealProps) {
     <div className={`grid grid-cols-1 lg:grid-cols-12 gap-12 items-start ${className}`}>
       {/* Left side slides from left */}
       <motion.div
-        initial={{ opacity: 0, x: -90, filter: 'blur(6px)' }}
-        whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ type: 'spring', stiffness: 60, damping: 17, delay: 0.1 }}
+        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
+        style={{ willChange: 'transform, opacity', transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}
         className="lg:col-span-7 space-y-6"
       >
         {left}
@@ -73,10 +75,11 @@ export function SplitReveal({ left, right, className = '' }: SplitRevealProps) {
 
       {/* Right side slides from right */}
       <motion.div
-        initial={{ opacity: 0, x: 90, filter: 'blur(6px)' }}
-        whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+        initial={{ opacity: 0, x: 20 }}
+        whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ type: 'spring', stiffness: 60, damping: 17, delay: 0.2 }}
+        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+        style={{ willChange: 'transform, opacity', transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}
         className="lg:col-span-5 space-y-6"
       >
         {right}
@@ -84,3 +87,5 @@ export function SplitReveal({ left, right, className = '' }: SplitRevealProps) {
     </div>
   );
 }
+
+

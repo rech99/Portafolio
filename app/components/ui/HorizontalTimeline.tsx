@@ -82,9 +82,9 @@ export function HorizontalTimeline({ items, itemsPerPage = 3 }: HorizontalTimeli
                 {items[mobileIndex].period}
               </span>
             </div>
-
-            <article className="w-full border border-zinc-800 bg-zinc-950 p-4 space-y-3 border-t-2 border-t-orange-500 flex flex-col justify-start">
-              <header className="space-y-0.5 border-b border-zinc-800 pb-2 w-full">
+            {/* Active Mobile Timeline Card */}
+            <article className="w-full border border-zinc-800 bg-zinc-950 p-4 hover:border-t-2 hover:border-t-orange-500 hover:border-zinc-700 transition-all flex flex-col justify-start cursor-pointer">
+              <header className={`space-y-1 w-full ${items[mobileIndex].description || items[mobileIndex].details ? 'border-b border-zinc-800 pb-2.5' : ''}`}>
                 <h4 className="text-sm font-semibold text-white leading-snug">
                   {items[mobileIndex].title}
                 </h4>
@@ -94,7 +94,7 @@ export function HorizontalTimeline({ items, itemsPerPage = 3 }: HorizontalTimeli
               </header>
 
               {items[mobileIndex].description && (
-                <div className="w-full pt-1">
+                <div className="w-full pt-2">
                   <ul className="space-y-2 text-[11px] sm:text-xs text-zinc-300 font-normal leading-relaxed">
                     {items[mobileIndex].description.map((bullet, bIdx) => (
                       <li key={bIdx} className="flex items-start gap-1.5">
@@ -107,19 +107,18 @@ export function HorizontalTimeline({ items, itemsPerPage = 3 }: HorizontalTimeli
               )}
 
               {items[mobileIndex].details && (
-                <div className="w-full pt-1">
+                <div className="w-full pt-2">
                   <p className="text-[11px] sm:text-xs text-zinc-300 font-normal leading-relaxed">
                     {items[mobileIndex].details}
                   </p>
                 </div>
               )}
             </article>
-
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* DESKTOP VIEW (>= md): Standardized Height Cards with Internal Scroll for Overflow */}
+      {/* DESKTOP VIEW (>= md): Standardized Height Cards with Dynamic Adjustment */}
       <div className="hidden md:block w-full">
         {/* Optional Timeline Pagination Bar if total items > itemsPerPage */}
         {totalPages > 1 && (
@@ -153,61 +152,68 @@ export function HorizontalTimeline({ items, itemsPerPage = 3 }: HorizontalTimeli
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               className={`grid ${gridColsClass} gap-6 relative z-10`}
             >
-              {visibleItems.map((item) => (
-                <div key={item.id} className="flex flex-col items-center group w-full">
-                  
-                  {/* Professional Date Badge Above Timeline Line */}
-                  <div className="mb-2.5">
-                    <span className="font-mono text-xs text-orange-400 font-semibold uppercase tracking-wider px-3 py-1 bg-zinc-900 border border-zinc-800 group-hover:border-orange-500/60 transition-colors">
-                      {item.period}
-                    </span>
-                  </div>
+              {visibleItems.map((item) => {
+                const hasBullets = Boolean(item.description && item.description.length > 0);
+                return (
+                  <div key={item.id} className="flex flex-col items-center group w-full cursor-pointer">
+                    
+                    {/* Professional Date Badge Above Timeline Line */}
+                    <div className="mb-2.5">
+                      <span className="font-mono text-xs text-orange-400 font-semibold uppercase tracking-wider px-3 py-1 bg-zinc-900 border border-zinc-800 group-hover:border-orange-500/60 transition-colors">
+                        {item.period}
+                      </span>
+                    </div>
 
-                  {/* Timeline Pin Node on Axis & Vertical Stem */}
-                  <div className="relative flex flex-col items-center w-full">
-                    {/* Grey Horizontal Axis Line passing directly behind center of orange node */}
-                    <div className="absolute top-[7px] left-0 right-0 h-px bg-zinc-800 z-0" />
+                    {/* Timeline Pin Node on Axis & Vertical Stem */}
+                    <div className="relative flex flex-col items-center w-full">
+                      {/* Grey Horizontal Axis Line passing directly behind center of orange node */}
+                      <div className="absolute top-[7px] left-0 right-0 h-px bg-zinc-800 z-0" />
 
-                    {/* Orange Node Marker */}
-                    <div className="w-3.5 h-3.5 bg-zinc-950 border-2 border-orange-500 z-10 relative group-hover:bg-orange-500 transition-colors" />
-                    {/* Seamless Vertical Connector Stem touching card top border */}
-                    <div className="w-px h-6 bg-orange-500/80 z-0" />
-                  </div>
+                      {/* Orange Node Marker */}
+                      <div className="w-3.5 h-3.5 bg-zinc-950 border-2 border-orange-500 z-10 relative group-hover:bg-orange-500 transition-colors" />
+                      {/* Seamless Vertical Connector Stem touching card top border */}
+                      <div className="w-px h-6 bg-zinc-800 group-hover:bg-orange-500/80 transition-colors z-0" />
+                    </div>
 
-                  {/* Event Card Box - Standardized Fixed Height with Internal Scroll */}
-                  <article className="w-full border border-zinc-800 bg-zinc-950 p-4 sm:p-5 space-y-2.5 hover:border-zinc-700 transition-colors h-[270px] sm:h-[300px] flex flex-col justify-between border-t-2 border-t-orange-500 overflow-hidden">
-                    <header className="space-y-1 border-b border-zinc-800 pb-2 w-full flex-shrink-0">
-                      <h4 className="text-sm sm:text-base font-semibold text-white leading-snug">
-                        {item.title}
-                      </h4>
-                      <p className="text-[11px] font-mono text-zinc-400">
-                        {item.companyOrInstitution}
-                      </p>
-                    </header>
+                    {/* Event Card Box - Top Orange Border appears dynamically on Hover over container */}
+                    <article className={`w-full border border-zinc-800 bg-zinc-950 p-4 sm:p-5 space-y-2.5 group-hover:border-zinc-700 group-hover:border-t-2 group-hover:border-t-orange-500 transition-all flex flex-col overflow-hidden ${
+                      hasBullets ? 'h-[270px] sm:h-[300px] justify-between' : 'h-auto min-h-[130px] justify-start'
+                    }`}>
 
-                    {item.description && (
-                      <div className="flex-1 overflow-y-auto max-h-[170px] sm:max-h-[190px] pr-1.5 space-y-1.5 text-[11px] sm:text-xs text-zinc-300 font-normal leading-relaxed">
-                        <ul className="space-y-1.5">
-                          {item.description.map((bullet, bIdx) => (
-                            <li key={bIdx} className="flex items-start gap-1.5">
-                              <span className="text-orange-500 font-mono text-[10px] mt-0.5 flex-shrink-0">▪</span>
-                              <span>{bullet}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-
-                    {item.details && (
-                      <div className="flex-1 overflow-y-auto max-h-[170px] sm:max-h-[190px] pr-1">
-                        <p className="text-[11px] sm:text-xs text-zinc-300 font-normal leading-relaxed">
-                          {item.details}
+                      <header className={`space-y-1 w-full flex-shrink-0 ${hasBullets ? 'border-b border-zinc-800 pb-2' : 'border-b border-zinc-800/60 pb-2'}`}>
+                        <h4 className="text-sm sm:text-base font-semibold text-white leading-snug">
+                          {item.title}
+                        </h4>
+                        <p className="text-[11px] font-mono text-zinc-400">
+                          {item.companyOrInstitution}
                         </p>
-                      </div>
-                    )}
-                  </article>
-                </div>
-              ))}
+                      </header>
+
+
+                      {item.description && (
+                        <div className="flex-1 overflow-y-auto max-h-[170px] sm:max-h-[190px] pr-1.5 space-y-1.5 text-[11px] sm:text-xs text-zinc-300 font-normal leading-relaxed">
+                          <ul className="space-y-1.5">
+                            {item.description.map((bullet, bIdx) => (
+                              <li key={bIdx} className="flex items-start gap-1.5">
+                                <span className="text-orange-500 font-mono text-[10px] mt-0.5 flex-shrink-0">▪</span>
+                                <span>{bullet}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {item.details && (
+                        <div className="flex-1 overflow-y-auto max-h-[170px] sm:max-h-[190px] pr-1">
+                          <p className="text-[11px] sm:text-xs text-zinc-300 font-normal leading-relaxed">
+                            {item.details}
+                          </p>
+                        </div>
+                      )}
+                    </article>
+                  </div>
+                );
+              })}
             </motion.div>
           </AnimatePresence>
         </div>

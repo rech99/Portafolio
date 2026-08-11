@@ -36,38 +36,29 @@ export function PresentationDeck({ slides, footer }: PresentationDeckProps) {
   useEffect(() => {
     if (!isDeckMode) return;
 
-    const isInsideScrollable = (target: HTMLElement | null, deltaY: number): boolean => {
+    const isInsideScrollable = (target: HTMLElement | null): boolean => {
       let curr = target;
       while (curr && curr !== document.body && curr !== document.documentElement) {
         const style = window.getComputedStyle(curr);
         const overflowY = style.overflowY;
         const isScrollable = overflowY === 'auto' || overflowY === 'scroll';
         
+        // While hovering over an inner scrollable container, block section slide changes unconditionally
         if (isScrollable && curr.scrollHeight > curr.clientHeight + 4) {
-          if (deltaY > 0) {
-            // Scrolling down: if container has scroll remaining, allow native hover scroll
-            if (Math.ceil(curr.scrollTop + curr.clientHeight) < curr.scrollHeight - 2) {
-              return true;
-            }
-          } else if (deltaY < 0) {
-            // Scrolling up: if container is not at top, allow native hover scroll
-            if (curr.scrollTop > 2) {
-              return true;
-            }
-          }
+          return true;
         }
         curr = curr.parentElement;
       }
       return false;
     };
 
-
     const handleWheel = (e: WheelEvent) => {
       const target = e.target as HTMLElement;
-      if (isInsideScrollable(target, e.deltaY)) {
-        // Allow inner scrollable container to scroll naturally!
+      if (isInsideScrollable(target)) {
+        // Allow inner container to scroll natively, never trigger slide change on hover
         return;
       }
+
 
       e.preventDefault();
       if (isLocked) return;
@@ -186,26 +177,29 @@ export function PresentationDeck({ slides, footer }: PresentationDeckProps) {
               key={slides[activeIndex].id}
               initial={{
                 opacity: 0,
-                scale: 0.88,
-                filter: 'blur(10px)',
+                scale: 0.94,
               }}
               animate={{
                 opacity: 1,
                 scale: 1,
-                filter: 'blur(0px)',
               }}
               exit={{
                 opacity: 0,
-                scale: 1.08,
-                filter: 'blur(10px)',
+                scale: 1.05,
               }}
               transition={{
-                duration: 0.5,
+                duration: 0.45,
                 ease: [0.16, 1, 0.3, 1]
               }}
-              style={{ willChange: 'transform, opacity, filter' }}
+              style={{ 
+                willChange: 'transform, opacity',
+                transform: 'translateZ(0)',
+                backfaceVisibility: 'hidden',
+                WebkitBackfaceVisibility: 'hidden'
+              }}
               className="w-full h-full overflow-y-auto md:overflow-hidden flex flex-col justify-start md:justify-center items-center p-2 sm:p-4 md:p-6"
             >
+
               <div className="w-full max-w-6xl mx-auto px-3 sm:px-6 my-auto h-auto md:h-[calc(100vh-8rem)] md:h-[calc(100dvh-8rem)] md:min-h-[500px] md:max-h-[640px] flex flex-col justify-center overflow-y-auto md:overflow-visible py-2 md:py-0">
                 {slides[activeIndex].component}
               </div>

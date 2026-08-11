@@ -28,9 +28,10 @@ export function Hero() {
           
           {/* Left Main Content (7 cols) - Slide in from Left */}
           <motion.div 
-            initial={{ opacity: 0, x: -100, filter: 'blur(8px)' }}
-            animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-            transition={{ type: 'spring', stiffness: 55, damping: 16, delay: 0.1 }}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
+            style={{ willChange: 'transform, opacity', transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}
             className="lg:col-span-7 space-y-4 sm:space-y-6 md:space-y-8"
           >
             
@@ -69,11 +70,13 @@ export function Hero() {
 
           {/* Right Column: Clean Technical Summary Card (5 cols) - Slide in from Right */}
           <motion.div 
-            initial={{ opacity: 0, x: 100, filter: 'blur(8px)' }}
-            animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-            transition={{ type: 'spring', stiffness: 55, damping: 16, delay: 0.25 }}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+            style={{ willChange: 'transform, opacity', transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}
             className="lg:col-span-5 border border-zinc-800 bg-zinc-950 divide-y divide-zinc-800 text-xs mt-4 lg:mt-0"
           >
+
             <div className="p-3.5 sm:p-5 font-semibold text-white tracking-wide uppercase bg-zinc-900/40">
               {overviewTitle}
             </div>
