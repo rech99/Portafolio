@@ -40,7 +40,7 @@ export function HorizontalTimeline({ items, itemsPerPage = 3 }: HorizontalTimeli
   );
 
   return (
-    <div className="w-full overflow-x-hidden">
+    <div className="w-full overflow-x-clip">
       {/* MOBILE VIEW (< md): Single-Card Horizontal Tab Switcher */}
       <div className="block md:hidden space-y-3">
         {/* Mobile Tab Selector Bar */}
@@ -149,10 +149,10 @@ export function HorizontalTimeline({ items, itemsPerPage = 3 }: HorizontalTimeli
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className={`grid ${gridColsClass} gap-6 relative z-10`}
             >
               {visibleItems.map((item) => {
@@ -194,7 +194,10 @@ export function HorizontalTimeline({ items, itemsPerPage = 3 }: HorizontalTimeli
 
 
                       {item.description && (
-                        <div className="flex-1 overflow-y-auto max-h-[170px] sm:max-h-[190px] pr-1.5 space-y-1.5 text-[11px] sm:text-xs text-zinc-300 font-normal leading-relaxed">
+                        <div
+                          className="flex-1 overflow-y-auto space-y-1.5 text-[11px] sm:text-xs text-zinc-300 font-normal leading-relaxed"
+                          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' } as React.CSSProperties}
+                        >
                           <ul className="space-y-1.5">
                             {item.description.map((bullet, bIdx) => (
                               <li key={bIdx} className="flex items-start gap-1.5">
@@ -207,7 +210,10 @@ export function HorizontalTimeline({ items, itemsPerPage = 3 }: HorizontalTimeli
                       )}
 
                       {item.details && (
-                        <div className="flex-1 overflow-y-auto max-h-[170px] sm:max-h-[190px] pr-1">
+                        <div
+                          className="flex-1 overflow-y-auto"
+                          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' } as React.CSSProperties}
+                        >
                           <p className="text-[11px] sm:text-xs text-zinc-300 font-normal leading-relaxed">
                             {item.details}
                           </p>

@@ -219,7 +219,7 @@ export function Projects() {
                       {project.title}
                     </h3>
 
-                    <div className="overflow-y-auto max-h-[110px] pr-1">
+                    <div className="overflow-y-auto no-scrollbar max-h-[110px] pr-1">
                       <p className="text-zinc-300 text-xs leading-relaxed font-normal">
                         {project.description}
                       </p>

@@ -21,25 +21,12 @@ export function SectionReveal({
   return (
     <motion.section
       id={id}
-      initial={{ 
-        opacity: 0, 
-        y: 12,
-      }}
-      whileInView={{ 
-        opacity: 1, 
-        y: 0,
-      }}
-      viewport={{ once: true, amount: 0.1 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ 
-        duration: 0.4,
+        duration: 0.35,
         ease: [0.16, 1, 0.3, 1],
         delay
-      }}
-      style={{
-        willChange: 'transform, opacity',
-        transform: 'translateZ(0)',
-        backfaceVisibility: 'hidden',
-        WebkitBackfaceVisibility: 'hidden'
       }}
       className={`relative w-full max-w-full box-border ${className}`}
     >
