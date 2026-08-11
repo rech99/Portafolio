@@ -9,23 +9,16 @@ import { SectionHeading, SectionReveal } from '@/app/components/ui';
 export function Projects() {
   const { language } = useLanguage();
   const t = translations[language];
-  
-  // Desktop Carousel State
-  const [currentIndex, setCurrentIndex] = useState(0);
-  // Mobile Carousel State
-  const [mobileIndex, setMobileIndex] = useState(0);
 
   const projects = t.projects.items;
+
+
+
+  const [mobileIndex, setMobileIndex] = useState(0);
+  const [desktopIndex, setDesktopIndex] = useState(0);
+
   const itemsPerPage = 3;
-  const totalSlides = Math.ceil(projects.length / itemsPerPage);
-
-  const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
-  };
-
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
-  };
+  const totalPages = Math.ceil(projects.length / itemsPerPage);
 
   const goToMobilePrev = () => {
     setMobileIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
@@ -35,30 +28,36 @@ export function Projects() {
     setMobileIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
   };
 
+  const goToDesktopPrev = () => {
+    setDesktopIndex((prev) => (prev === 0 ? totalPages - 1 : prev - 1));
+  };
+
+  const goToDesktopNext = () => {
+    setDesktopIndex((prev) => (prev === totalPages - 1 ? 0 : prev + 1));
+  };
+
   const visibleProjects = projects.slice(
-    currentIndex * itemsPerPage,
-    (currentIndex + 1) * itemsPerPage
+    desktopIndex * itemsPerPage,
+    (desktopIndex + 1) * itemsPerPage
   );
 
   return (
     <SectionReveal id="projects" className="py-2 w-full h-auto md:h-full flex flex-col justify-start md:justify-center">
       <div className="max-w-6xl mx-auto w-full my-0 md:my-auto">
 
-
-
         <SectionHeading number="05">{t.projects.title}</SectionHeading>
-
-
-
-        {/* MOBILE VIEW (< md): Clean Single-Project Card with Fixed Height & Internal Scroll */}
+        
+        {/* MOBILE VIEW (< md): Single Project Card with Uncropped Typography */}
         <div className="block md:hidden space-y-3">
-          {/* Mobile Selector Controls */}
-          <div className="flex items-center justify-between font-mono text-xs text-zinc-400 border-b border-zinc-800 pb-2.5">
-            <span>PROJECT 0{mobileIndex + 1} / 0{projects.length}</span>
+          {/* Mobile Header Switcher Controls */}
+          <div className="flex items-center justify-between font-mono text-[10px] text-zinc-400 border border-zinc-800 p-2 bg-zinc-950">
+            <span className="font-semibold text-orange-400">
+              PROJECT 0{mobileIndex + 1} / 0{projects.length}
+            </span>
             <div className="flex items-center gap-2">
               <button
                 onClick={goToMobilePrev}
-                className="px-2.5 py-1 bg-zinc-900 border border-zinc-800 hover:border-white hover:text-white transition-colors cursor-pointer inline-flex items-center gap-1 text-[11px]"
+                className="px-2.5 py-1 bg-zinc-900 border border-zinc-800 hover:border-white hover:text-white transition-colors cursor-pointer inline-flex items-center gap-1 text-[10px]"
               >
                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -67,35 +66,33 @@ export function Projects() {
               </button>
               <button
                 onClick={goToMobileNext}
-                className="px-2.5 py-1 bg-zinc-900 border border-zinc-800 hover:border-white hover:text-white transition-colors cursor-pointer inline-flex items-center gap-1 text-[11px]"
+                className="px-2.5 py-1 bg-zinc-900 border border-zinc-800 hover:border-white hover:text-white transition-colors cursor-pointer inline-flex items-center gap-1 text-[10px]"
               >
                 <span>NEXT</span>
                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </button>
-
             </div>
           </div>
 
-          {/* Active Mobile Project Card */}
+          {/* Active Mobile Project Card - Responsive & Uncropped */}
           <AnimatePresence mode="wait">
             <motion.article
               key={projects[mobileIndex].id}
-              initial={{ opacity: 0, x: 25 }}
+              initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -25 }}
-              transition={{ duration: 0.3 }}
-              className="border border-zinc-800 bg-zinc-950 flex flex-col hover:border-zinc-700 transition-colors w-full h-auto max-h-[440px] justify-start overflow-hidden"
-
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.25 }}
+              className="border border-zinc-800 bg-zinc-950 flex flex-col hover:border-zinc-700 transition-colors w-full h-auto overflow-hidden"
             >
               {/* Project Image */}
-              <div className="h-36 relative w-full overflow-hidden bg-zinc-900 border-b border-zinc-800 flex-shrink-0">
+              <div className="h-28 sm:h-32 relative w-full overflow-hidden bg-zinc-900 border-b border-zinc-800 flex-shrink-0">
                 {projects[mobileIndex].image ? (
                   <img 
                     src={projects[mobileIndex].image} 
                     alt={projects[mobileIndex].title} 
-                    className="w-full h-full object-fill"
+                    className="w-full h-full object-cover"
                   />
                 ) : (
                   <div className="w-full h-full bg-zinc-900 flex items-center justify-center font-mono text-xs text-zinc-600">
@@ -104,27 +101,25 @@ export function Projects() {
                 )}
               </div>
 
-              {/* Content */}
-              <div className="p-3.5 flex-1 flex flex-col justify-between overflow-hidden space-y-2">
-                <div className="space-y-1 flex-1 overflow-hidden">
-                  <span className="font-mono text-[10px] text-orange-500 font-semibold tracking-wider block">
-                    PROJECT 0{mobileIndex + 1}
+              {/* Card Content - Dynamic Height & Uncropped Text */}
+              <div className="p-4 space-y-3">
+                <div className="space-y-1.5">
+                  <span className="font-mono text-[10px] text-orange-500 font-semibold tracking-wider block uppercase">
+                    FEATURED PROJECT 0{mobileIndex + 1}
                   </span>
 
                   <h3 className="text-base font-semibold text-white tracking-tight leading-snug">
                     {projects[mobileIndex].title}
                   </h3>
 
-                  <div className="overflow-y-auto max-h-[85px] pr-1">
-                    <p className="text-zinc-400 text-xs leading-relaxed font-normal">
-                      {projects[mobileIndex].description}
-                    </p>
-                  </div>
+                  <p className="text-zinc-300 text-xs leading-relaxed font-normal pt-1">
+                    {projects[mobileIndex].description}
+                  </p>
                 </div>
 
-                <div className="space-y-2 pt-2 border-t border-zinc-800/80 flex-shrink-0">
-                  {/* Tags */}
-                  <div className="flex gap-1 flex-wrap">
+                <div className="space-y-3 pt-2.5 border-t border-zinc-800/80">
+                  {/* Tech Tags */}
+                  <div className="flex gap-1.5 flex-wrap">
                     {projects[mobileIndex].tags.map((tag) => (
                       <span
                         key={tag}
@@ -135,7 +130,7 @@ export function Projects() {
                     ))}
                   </div>
 
-                  {/* Links */}
+                  {/* External Links */}
                   <div className="flex gap-4 pt-1 font-mono text-xs">
                     {projects[mobileIndex].projectUrl && projects[mobileIndex].projectUrl !== '#' && (
                       <a
@@ -164,120 +159,117 @@ export function Projects() {
           </AnimatePresence>
         </div>
 
-        {/* DESKTOP VIEW (>= md): 3-Card Grid Carousel with Fixed Card Heights & Internal Scroll */}
+        {/* DESKTOP VIEW (>= md): 3-Card Grid Carousel */}
         <div className="hidden md:block w-full">
           <div className="flex items-center justify-between mb-4 gap-4">
             <div className="flex-1" />
             
-            {/* Sharp Monospaced Carousel Controls */}
-            {totalSlides > 1 && (
-              <div className="flex items-center gap-2 font-mono text-xs">
+            {totalPages > 1 && (
+              <div className="flex items-center gap-2">
                 <button
-                  onClick={goToPrevious}
-                  className="px-3 py-1.5 border border-zinc-800 bg-zinc-950 text-zinc-300 hover:border-zinc-500 hover:text-white transition-colors cursor-pointer"
-                  aria-label="Previous projects"
+                  onClick={goToDesktopPrev}
+                  className="px-3 py-1 bg-zinc-900 border border-zinc-800 hover:border-white hover:text-white transition-colors cursor-pointer text-xs font-mono inline-flex items-center gap-1"
                 >
-                  ← PREV
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                  <span>PREV</span>
                 </button>
-                <span className="px-3 py-1.5 border border-zinc-800 bg-zinc-900 text-zinc-400">
-                  0{currentIndex + 1} / 0{totalSlides}
-                </span>
                 <button
-                  onClick={goToNext}
-                  className="px-3 py-1.5 border border-zinc-800 bg-zinc-950 text-zinc-300 hover:border-zinc-500 hover:text-white transition-colors cursor-pointer"
-                  aria-label="Next projects"
+                  onClick={goToDesktopNext}
+                  className="px-3 py-1 bg-zinc-900 border border-zinc-800 hover:border-white hover:text-white transition-colors cursor-pointer text-xs font-mono inline-flex items-center gap-1"
                 >
-                  NEXT →
+                  <span>NEXT</span>
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
                 </button>
               </div>
             )}
           </div>
-          
-          {/* Project Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {visibleProjects.map((project, idx) => {
-              const projectNum = String(currentIndex * itemsPerPage + idx + 1).padStart(2, '0');
-              return (
-                <article
-                  key={project.id}
-                  className="border border-zinc-800 bg-zinc-950 flex flex-col hover:border-zinc-700 transition-colors h-[380px] sm:h-[400px] justify-between overflow-hidden"
-                >
-                  {/* Project Image */}
-                  <div className="h-40 relative w-full overflow-hidden bg-zinc-900 border-b border-zinc-800 flex-shrink-0">
-                    {project.image ? (
-                      <img 
-                        src={project.image} 
-                        alt={project.title} 
-                        className="w-full h-full object-fill hover:scale-105 transition-transform duration-500"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-zinc-900 flex items-center justify-center font-mono text-xs text-zinc-600">
-                        {project.title}
-                      </div>
-                    )}
-                  </div>
 
-                  {/* Content */}
-                  <div className="p-5 flex-1 flex flex-col justify-between overflow-hidden space-y-3">
-                    <div className="space-y-1.5 flex-1 overflow-hidden">
-                      <span className="font-mono text-xs text-orange-500 font-semibold tracking-wider block">
-                        PROJECT {projectNum}
-                      </span>
-
-                      <h3 className="text-base sm:text-lg font-semibold text-white tracking-tight leading-snug">
-                        {project.title}
-                      </h3>
-
-                      <div className="overflow-y-auto max-h-[100px] sm:max-h-[110px] pr-1">
-                        <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed font-normal">
-                          {project.description}
-                        </p>
-                      </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {visibleProjects.map((project) => (
+              <motion.article
+                key={project.id}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="border border-zinc-800 bg-zinc-950 flex flex-col hover:border-zinc-700 transition-colors w-full h-[400px] justify-between overflow-hidden group"
+              >
+                {/* Project Image */}
+                <div className="h-36 relative w-full overflow-hidden bg-zinc-900 border-b border-zinc-800 flex-shrink-0">
+                  {project.image ? (
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-zinc-900 flex items-center justify-center font-mono text-xs text-zinc-600">
+                      {project.title}
                     </div>
+                  )}
+                </div>
 
-                    <div className="space-y-3 pt-2 border-t border-zinc-800/80 flex-shrink-0">
-                      {/* Tags */}
-                      <div className="flex gap-1.5 flex-wrap">
-                        {project.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-2.5 py-0.5 text-[11px] font-mono bg-zinc-900 border border-zinc-800 text-zinc-300"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
+                {/* Content */}
+                <div className="p-4 flex-1 flex flex-col justify-between overflow-hidden space-y-2">
+                  <div className="space-y-1.5 flex-1 overflow-hidden">
+                    <h3 className="text-base font-semibold text-white tracking-tight leading-snug">
+                      {project.title}
+                    </h3>
 
-                      {/* Links */}
-                      <div className="flex gap-4 pt-1 border-t border-zinc-800/60 font-mono text-xs">
-                        {project.projectUrl && project.projectUrl !== '#' && (
-                          <a
-                            href={project.projectUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-white hover:text-orange-500 transition-colors uppercase tracking-wider flex items-center gap-1 font-semibold"
-                          >
-                            {project.viewProject} ↗
-                          </a>
-                        )}
-                        {project.githubUrl && (
-                          <a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-zinc-400 hover:text-white transition-colors uppercase tracking-wider flex items-center gap-1"
-                          >
-                            {project.github} ↗
-                          </a>
-                        )}
-                      </div>
+                    <div className="overflow-y-auto max-h-[110px] pr-1">
+                      <p className="text-zinc-300 text-xs leading-relaxed font-normal">
+                        {project.description}
+                      </p>
                     </div>
                   </div>
-                </article>
-              );
-            })}
+
+
+                  <div className="space-y-2 pt-2 border-t border-zinc-800/80 flex-shrink-0">
+                    {/* Tags */}
+                    <div className="flex gap-1.5 flex-wrap">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2 py-0.5 text-[10px] font-mono bg-zinc-900 border border-zinc-800 text-zinc-300"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Links */}
+                    <div className="flex gap-4 pt-1 font-mono text-xs">
+                      {project.projectUrl && project.projectUrl !== '#' && (
+                        <a
+                          href={project.projectUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-white hover:text-orange-500 transition-colors uppercase tracking-wider flex items-center gap-1 font-semibold"
+                        >
+                          {project.viewProject} ↗
+                        </a>
+                      )}
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-zinc-400 hover:text-white transition-colors uppercase tracking-wider flex items-center gap-1"
+                        >
+                          {project.github} ↗
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </motion.article>
+            ))}
           </div>
         </div>
+
       </div>
     </SectionReveal>
   );
