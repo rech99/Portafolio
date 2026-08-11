@@ -59,12 +59,13 @@ export function PresentationDeck({ slides, footer }: PresentationDeckProps) {
 
 
     const handleWheel = (e: WheelEvent) => {
+      // Desktop only — on touch/mobile devices, navigation is via horizontal swipe
+      if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
+
       const target = e.target as HTMLElement;
       if (isInsideScrollable(target)) {
-        // Allow inner container to scroll natively, never trigger slide change on hover
         return;
       }
-
 
       e.preventDefault();
       if (isLocked) return;
@@ -72,10 +73,8 @@ export function PresentationDeck({ slides, footer }: PresentationDeckProps) {
       if (Math.abs(e.deltaY) > 20) {
         setIsLocked(true);
         if (e.deltaY > 0) {
-          // Scroll Down -> Next Slide
           setActiveIndex((prev) => Math.min(prev + 1, slides.length - 1));
         } else {
-          // Scroll Up -> Previous Slide
           setActiveIndex((prev) => Math.max(prev - 1, 0));
         }
 
