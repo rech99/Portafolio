@@ -220,8 +220,8 @@ export function PresentationDeck({ slides, footer }: PresentationDeckProps) {
             </AnimatePresence>
           </div>
 
-          {/* ── MOBILE: natural scroll, no fixed heights, no dvh ────── */}
-          <div className="md:hidden w-full max-w-full overflow-x-hidden no-scrollbar bg-zinc-950 bg-grid-pattern pt-16 pb-24">
+          {/* ── MOBILE: natural scroll, no fixed heights ────── */}
+          <div className="md:hidden w-full max-w-full overflow-x-clip no-scrollbar bg-zinc-950 bg-grid-pattern">
             <AnimatePresence mode="wait">
               <motion.div
                 key={slides[activeIndex].id}
@@ -230,7 +230,7 @@ export function PresentationDeck({ slides, footer }: PresentationDeckProps) {
                 exit={{ opacity: 0, x: -24 }}
                 transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
                 style={{ willChange: 'transform, opacity' }}
-                className="w-full max-w-full overflow-x-hidden no-scrollbar px-4 sm:px-6"
+                className="w-full min-h-[calc(100svh-4rem)] flex flex-col justify-center px-4 sm:px-6 py-8"
               >
                 {slides[activeIndex].component}
               </motion.div>
