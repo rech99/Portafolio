@@ -8,7 +8,7 @@ interface SectionHeadingProps {
 
 export function SectionHeading({ children, number, className = '' }: SectionHeadingProps) {
   return (
-    <div className={`mb-10 md:mb-12 border-b border-zinc-800 pb-4 flex items-end justify-between ${className}`}>
+    <div className={`mb-4 sm:mb-6 md:mb-10 border-b border-zinc-800 pb-3 sm:pb-4 flex items-end justify-between ${className}`}>
       <div className="flex items-center gap-3">
         {number && (
           <span className="font-mono text-xs text-orange-500 font-semibold tracking-wider uppercase">

@@ -109,7 +109,7 @@ export const translations = {
         },
         {
           name: 'Languages & Skills',
-          items: ['Advanced English', 'Technical Leadership', 'Teamwork', 'Proactivity', 'Adaptability to Change']
+          items: ['Advanced English', 'Technical Leadership', 'Teamwork', 'Proactivity', 'Adaptability']
         }
       ],
     },
@@ -335,7 +335,7 @@ export const translations = {
         },
         {
           name: 'Idiomas & Habilidades',
-          items: ['Inglés avanzado', 'Liderazgo técnico', 'Trabajo en equipo', 'Proactividad', 'Adaptabilidad al cambio']
+          items: ['Inglés avanzado', 'Liderazgo técnico', 'Trabajo en equipo', 'Proactividad', 'Adaptabilidad']
         }
       ],
     },

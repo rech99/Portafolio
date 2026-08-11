@@ -15,6 +15,7 @@ export function About() {
         <SectionHeading number="01">{t.about.title}</SectionHeading>
         
         <SplitReveal
+          className="gap-3.5 sm:gap-6 lg:gap-12"
           left={
             <div className="space-y-3 sm:space-y-5 text-xs sm:text-sm md:text-base text-zinc-300 leading-relaxed font-normal">
               {t.about.content.map((paragraph, index) => (

@@ -46,7 +46,7 @@ export function Hero() {
     >
       <div className="max-w-6xl mx-auto w-full my-auto">
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center">
           
           {/* Left Main Content (7 cols) - Slide in from Left */}
           <motion.div 
@@ -100,7 +100,7 @@ export function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.5 }}
-              className="md:hidden pt-6 flex flex-col items-center justify-center gap-2.5 w-full text-center"
+              className="md:hidden pt-2 flex flex-col items-center justify-center gap-2.5 w-full text-center"
             >
               <div className="w-16 h-px bg-zinc-800 relative overflow-hidden">
                 <motion.div
@@ -127,7 +127,7 @@ export function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
             style={{ willChange: 'transform, opacity', transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}
-            className="lg:col-span-5 border border-zinc-800 bg-zinc-950 divide-y divide-zinc-800 text-xs mt-4 lg:mt-0"
+            className="lg:col-span-5 border border-zinc-800 bg-zinc-950 divide-y divide-zinc-800 text-xs mt-2 lg:mt-0"
           >
             <div className="p-3.5 sm:p-5 font-semibold text-white tracking-wide uppercase bg-zinc-900/40">
               {overviewTitle}
