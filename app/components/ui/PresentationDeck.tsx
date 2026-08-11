@@ -212,7 +212,7 @@ export function PresentationDeck({ slides, footer }: PresentationDeckProps) {
               >
                 <div
                   data-deck-container="true"
-                  className="w-full max-w-6xl mx-auto px-4 sm:px-6 h-full flex flex-col justify-center no-scrollbar"
+                  className="w-full max-w-6xl mx-auto px-4 sm:px-6 xl:pr-36 2xl:pr-6 h-full flex flex-col justify-center no-scrollbar"
                 >
                   {slides[activeIndex].component}
                 </div>

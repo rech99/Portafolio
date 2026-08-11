@@ -4,9 +4,9 @@
 
 /* Design Tokens */
 @theme {
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Geist", "Satoshi", "Inter", sans-serif;
-  --font-mono: "Geist Mono", "JetBrains Mono", "Courier New", monospace;
-  --font-display: system-ui, -apple-system, BlinkMacSystemFont, "Geist", "Cabinet Grotesk", sans-serif;
+  --font-sans: var(--font-sans), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-mono), "JetBrains Mono", monospace;
+  --font-display: var(--font-sans), system-ui, -apple-system, sans-serif;
 
   /* Crisp Architectural Color Palette */
   --color-brand-accent: #f97316; /* Signal Orange accent */

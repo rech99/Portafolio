@@ -1,17 +1,17 @@
 import type { Metadata } from 'next'
-import { Inter, Lexend } from 'next/font/google'
+import { Inter, JetBrains_Mono } from 'next/font/google'
 import { LanguageProvider } from '@/app/lib/useLanguage'
 import './globals.css'
 
 const inter = Inter({ 
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-sans',
   display: 'swap',
 })
 
-const lexend = Lexend({ 
+const jetbrainsMono = JetBrains_Mono({ 
   subsets: ['latin'],
-  variable: '--font-lexend',
+  variable: '--font-mono',
   display: 'swap',
 })
 
@@ -32,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${lexend.variable}`}>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <body>
         <LanguageProvider>
           {children}
