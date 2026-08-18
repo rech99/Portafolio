@@ -7,6 +7,7 @@ export { HUDNavigation } from './HUDNavigation';
 export { SectionReveal, SplitReveal } from './SectionReveal';
 export { PresentationDeck } from './PresentationDeck';
 export { HorizontalTimeline } from './HorizontalTimeline';
+export { PrivacyModal } from './PrivacyModal';
 
 
 

@@ -203,6 +203,8 @@ export const translations = {
     contact: {
       title: 'Get In Touch',
       subtitle: 'I\'m always open to discussing new projects, creative ideas, or opportunities to be part of your vision.',
+      privacyNotice: 'Your details are only used to respond to your inquiry.',
+      privacyLink: 'Privacy Notice',
       form: {
         name: 'Name',
         email: 'Email',
@@ -215,6 +217,36 @@ export const translations = {
     },
     footer: {
       rights: 'All rights reserved.',
+      privacy: 'Privacy',
+    },
+    privacyModal: {
+      title: 'Privacy Policy',
+      badge: 'LEGAL & PRIVACY',
+      lastUpdated: 'Last updated: August 2026',
+      sections: [
+        {
+          title: '1. Data Controller',
+          content: 'This site is the personal professional portfolio of Raúl Enrique Campbell Hidalgo (contact: rech_99@hotmail.com).',
+        },
+        {
+          title: '2. Data Collection & Purpose',
+          content: 'The only personal data collected is what you voluntarily submit through the contact form (name, email address, and message). This data is processed solely to answer your questions, proposals, or communications.',
+        },
+        {
+          title: '3. Third-Party Services & Infrastructure',
+          content: 'Form messages are transmitted via Resend (transactional email API). Your data is never sold, leased, or shared with third parties or advertisers.',
+        },
+        {
+          title: '4. Cookies & Analytics',
+          content: 'This website does not use tracking cookies, marketing cookies, or third-party behavioral analytics tools (such as Google Analytics or Meta Pixel).',
+        },
+        {
+          title: '5. Your Rights (Access & Deletion)',
+          content: 'Under applicable data protection regulations (GDPR, CCPA, etc.), you have the right to request access, rectification, or deletion of your communications at any time by emailing rech_99@hotmail.com.',
+        },
+      ],
+      close: 'Close',
+      escKey: 'ESC',
     },
     siteConfig: {
       name: 'Raúl Enrique Campbell Hidalgo',
@@ -224,6 +256,7 @@ export const translations = {
         { name: 'Email', url: 'mailto:rech_99@hotmail.com' },
       ],
     },
+
 
   },
   es: {
@@ -429,6 +462,8 @@ export const translations = {
     contact: {
       title: 'Ponte en Contacto',
       subtitle: 'Siempre estoy abierto a discutir nuevos proyectos, ideas creativas u oportunidades para ser parte de tu visión.',
+      privacyNotice: 'Tus datos solo se usarán para responder a tu mensaje.',
+      privacyLink: 'Aviso de Privacidad',
       form: {
         name: 'Nombre',
         email: 'Correo Electrónico',
@@ -441,6 +476,36 @@ export const translations = {
     },
     footer: {
       rights: 'Todos los derechos reservados.',
+      privacy: 'Privacidad',
+    },
+    privacyModal: {
+      title: 'Aviso de Privacidad',
+      badge: 'LEGAL Y PRIVACIDAD',
+      lastUpdated: 'Última actualización: Agosto 2026',
+      sections: [
+        {
+          title: '1. Responsable del Tratamiento',
+          content: 'Este sitio web es el portafolio profesional personal de Raúl Enrique Campbell Hidalgo (contacto: rech_99@hotmail.com).',
+        },
+        {
+          title: '2. Datos Recopilados y Finalidad',
+          content: 'Los únicos datos personales recopilados son los facilitados voluntariamente en el formulario de contacto (nombre, correo electrónico y mensaje). Dichos datos se utilizan exclusivamente para responder a consultas, propuestas laborales o comunicaciones profesionales.',
+        },
+        {
+          title: '3. Servicios de Terceros e Infraestructura',
+          content: 'Los mensajes enviados a través del formulario son procesados y transmitidos mediante Resend (API de correo transaccional). En ningún caso se almacenan en bases de datos públicas, ni se comercializan, ceden o comparten con terceros o agencias de publicidad.',
+        },
+        {
+          title: '4. Cookies y Herramientas de Rastreo',
+          content: 'Este sitio web no utiliza cookies de seguimiento invasivo, analítica de terceros (como Google Analytics) ni píxeles publicitarios.',
+        },
+        {
+          title: '5. Ejercicio de Derechos (Acceso y Supresión)',
+          content: 'Conforme a la normativa de protección de datos (RGPD, LFPDPPP y afines), puedes solicitar en cualquier momento el acceso, rectificación o eliminación total de tu historial de comunicación escribiendo a rech_99@hotmail.com.',
+        },
+      ],
+      close: 'Cerrar',
+      escKey: 'ESC',
     },
     siteConfig: {
       name: 'Raúl Enrique Campbell Hidalgo',
